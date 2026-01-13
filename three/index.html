@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="fr" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QUANTUM | Institutional Grade Trading</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700&family=Oswald:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* --- CORE SETTINGS --- */
+        body { font-family: 'Manrope', sans-serif; overflow-x: hidden; background-color: #050505; color: #e2e8f0; }
+        h1, h2, h3, h4, .font-heading { font-family: 'Oswald', sans-serif; text-transform: uppercase; letter-spacing: 0.05em; }
+        
+        /* --- GOLD METALLIC GRADIENT --- */
+        .text-gold {
+            background: linear-gradient(135deg, #D4AF37 0%, #F8E299 40%, #B89146 100%);
+            -webkit-background-clip: text;
+            color: transparent;
+        }
+        .bg-gold {
+            background: linear-gradient(135deg, #D4AF37 0%, #F8E299 40%, #B89146 100%);
+        }
+        .border-gold { border-color: #B89146; }
+
+        /* --- ANIMATIONS --- */
+        @keyframes marquee {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+        .animate-marquee {
+            display: flex;
+            animation: marquee 30s linear infinite;
+        }
+
+        /* --- UTILITIES --- */
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        .grid-bg {
+            background-image: linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+            background-size: 30px 30px;
+        }
+        
+        /* --- BUTTONS --- */
+        .btn-primary {
+            background: linear-gradient(to bottom, #D4AF37, #B89146);
+            color: #000;
+            font-family: 'Oswald', sans-serif;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid #F8E299;
+        }
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 0 25px rgba(212, 175, 55, 0.4);
+        }
+    </style>
+</head>
+<body class="antialiased selection:bg-[#D4AF37] selection:text-black">
+
+    <div class="bg-black border-b border-white/10 py-2 overflow-hidden relative z-50">
+        <div class="flex items-center justify-between container mx-auto px-6 text-[10px] md:text-xs font-mono text-gray-500">
+            <span class="flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span> SYSTEM ONLINE</span>
+            <span class="hidden md:block">INSTITUTIONAL DATA FEED // LATENCY: 12ms</span>
+            <span class="text-[#D4AF37]">COHORTE FÉVRIER: 3 PLACES RESTANTES</span>
+        </div>
+    </div>
+
+    <header class="relative min-h-[90vh] flex items-center justify-center pt-10 overflow-hidden border-b border-white/5">
+        <div class="absolute inset-0 grid-bg opacity-30"></div>
+        <div class="absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-[#D4AF37]/5 rounded-full blur-[120px] pointer-events-none"></div>
+
+        <div class="container mx-auto px-6 relative z-10 text-center max-w-5xl">
+            
+            <div class="inline-flex items-center gap-3 border border-[#D4AF37]/30 bg-[#D4AF37]/5 px-6 py-2 rounded-full mb-10 backdrop-blur">
+                <svg class="w-4 h-4 text-[#D4AF37]" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+                <span class="text-xs font-heading text-[#D4AF37] tracking-widest">PROTOCOL V4.0 ACTIVATED</span>
+            </div>
+
+            <h1 class="text-6xl md:text-9xl font-light leading-none mb-8 text-white tracking-tighter">
+                MASTER THE <br>
+                <span class="font-bold text-gold">CHAOS.</span>
+            </h1>
+
+            <p class="text-lg md:text-xl text-gray-400 mb-12 max-w-2xl mx-auto leading-relaxed font-light">
+                Le programme d'élite pour maîtriser le <strong>Order Flow Institutionnel</strong> et obtenir 100k$ de capital financé en 90 jours.
+            </p>
+
+            <div class="flex flex-col md:flex-row gap-6 justify-center items-center">
+                <a href="#apply" class="btn-primary px-10 py-5 rounded text-sm w-full md:w-auto shadow-[0_0_20px_rgba(212,175,55,0.2)]">
+                    Déposer ma Candidature
+                </a>
+                <a href="#revelation" class="flex items-center gap-2 text-sm font-heading text-gray-400 hover:text-white transition uppercase tracking-widest">
+                    <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 14l-7 7m0 0l-7-7m7 7V3"/></svg>
+                    Découvrir la Stratégie
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <section class="py-16 bg-[#020202] text-white relative border-b border-white/5 overflow-hidden">
+        <div class="w-full bg-[#0a0a0a] border-y border-white/10 py-3 mb-12 overflow-hidden flex relative z-10">
+            <div class="animate-marquee whitespace-nowrap flex gap-12 text-sm font-mono text-gray-400">
+                <span class="flex items-center gap-2"><span class="text-green-500">▲</span> EUR/USD: 1.0924 <span class="text-green-500 text-xs">(+0.4%)</span></span>
+                <span class="flex items-center gap-2"><span class="text-red-500">▼</span> GBP/JPY: 182.40 <span class="text-red-500 text-xs">(-0.1%)</span></span>
+                <span class="flex items-center gap-2"><span class="text-[#D4AF37]">●</span> STUDENT_242: FUNDED $100K</span>
+                <span class="flex items-center gap-2"><span class="text-green-500">▲</span> XAU/USD: 2045.50 <span class="text-green-500 text-xs">(+1.2%)</span></span>
+                <span class="flex items-center gap-2"><span class="text-[#D4AF37]">●</span> STUDENT_89: PAYOUT $4,200</span>
+                <span class="flex items-center gap-2"><span class="text-green-500">▲</span> EUR/USD: 1.0924 <span class="text-green-500 text-xs">(+0.4%)</span></span>
+                <span class="flex items-center gap-2"><span class="text-red-500">▼</span> GBP/JPY: 182.40 <span class="text-red-500 text-xs">(-0.1%)</span></span>
+            </div>
+        </div>
+
+        <div class="container mx-auto px-6 max-w-7xl relative z-10">
+            <div class="grid md:grid-cols-4 gap-6">
+                <div class="md:col-span-2 bg-[#080808] border border-white/10 p-8 rounded relative overflow-hidden group hover:border-[#D4AF37]/30 transition duration-500">
+                    <h3 class="text-gray-500 text-xs uppercase tracking-widest font-mono mb-2">Total Student Capital Funded</h3>
+                    <div class="text-5xl md:text-6xl font-heading text-white mb-4">$12,450,000<span class="text-[#D4AF37] text-2xl">+</span></div>
+                    <div class="w-full bg-gray-800 h-1 rounded-full overflow-hidden">
+                        <div class="bg-[#D4AF37] h-full w-[85%] shadow-[0_0_10px_#D4AF37]"></div>
+                    </div>
+                </div>
+                <div class="bg-[#080808] border border-white/10 p-6 rounded flex flex-col justify-between hover:border-[#D4AF37]/30 transition">
+                    <h3 class="text-gray-500 text-xs uppercase tracking-widest font-mono mb-4">Avg. Win Rate</h3>
+                    <div class="flex items-end gap-2">
+                        <span class="text-4xl font-bold text-white">68%</span>
+                        <span class="text-green-500 text-xs mb-2">▲ VERIFIED</span>
+                    </div>
+                    <p class="text-[10px] text-gray-500 font-mono mt-2">AUDITED BY MYFXBOOK</p>
+                </div>
+                <div class="bg-[#080808] border border-white/10 p-6 rounded flex flex-col justify-between hover:border-[#D4AF37]/30 transition">
+                    <h3 class="text-gray-500 text-xs uppercase tracking-widest font-mono mb-4">Avg. Risk:Reward</h3>
+                    <div class="flex items-end gap-2">
+                        <span class="text-4xl font-bold text-white">1:4.5</span>
+                    </div>
+                    <div class="flex gap-1 h-2 mt-2">
+                        <div class="w-1/5 bg-red-900 rounded-sm"></div>
+                        <div class="w-4/5 bg-green-500 rounded-sm animate-pulse"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-32 bg-[#0a0a0a] border-y border-white/5 relative overflow-hidden">
+    
+        <style>
+            .perspective-1500 { perspective: 1500px; }
+            .book-3d {
+                transition: transform 0.5s ease-out;
+                transform-style: preserve-3d;
+                box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7);
+            }
+            .book-3d:hover {
+                transform: rotateX(5deg) scale(1.02);
+            }
+            .book-spine {
+                background: linear-gradient(to right, rgba(0,0,0,0.05), rgba(0,0,0,0.2), rgba(0,0,0,0.05));
+            }
+            .page-shadow-left { box-shadow: inset -20px 0 30px rgba(0,0,0,0.05); }
+            .page-shadow-right { box-shadow: inset 20px 0 30px rgba(0,0,0,0.05); }
+        </style>
+    
+        <div class="container mx-auto px-6 max-w-6xl relative z-10">
+            
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-5xl text-white font-heading mb-4 uppercase font-bold" style="font-family: 'Oswald', sans-serif;">
+                    LE PROGRAMME <span class="text-[#D4AF37]">JOUR APRÈS JOUR</span>
+                </h2>
+                <p class="text-gray-400 max-w-2xl mx-auto font-light">
+                    Une vision claire de votre transformation. Pas de surprises, juste de l'exécution.
+                </p>
+            </div>
+    
+            <div class="perspective-1500 flex justify-center">
+                <div class="book-3d relative w-full max-w-5xl h-[550px] md:h-[650px] bg-[#fdfbf7] flex rounded-lg overflow-hidden border border-white/10">
+                    
+                    <div class="absolute left-1/2 top-0 bottom-0 w-12 -translate-x-1/2 book-spine z-20 pointer-events-none"></div>
+    
+                    <div class="w-1/2 h-full p-4 md:p-10 page-shadow-left flex flex-col border-r border-gray-200">
+                        <div class="text-center mb-6">
+                            <span class="text-xs font-bold text-gray-400 tracking-[0.3em] uppercase">Planning</span>
+                            <h3 class="text-2xl font-bold text-slate-900 mt-1 uppercase" style="font-family: 'Oswald', sans-serif;">FÉVRIER 2024</h3>
+                            <div class="w-10 h-1 bg-[#D4AF37] mx-auto mt-2"></div>
+                        </div>
+    
+                        <div class="flex-grow flex flex-col justify-center max-w-sm mx-auto w-full">
+                            <div class="grid grid-cols-7 gap-2 text-center text-[10px] font-bold text-gray-400 uppercase mb-4">
+                                <span>Lun</span><span>Mar</span><span>Mer</span><span>Jeu</span><span>Ven</span><span>Sam</span><span>Dim</span>
+                            </div>
+                            
+                            <div class="grid grid-cols-7 gap-2 text-center text-sm font-bold text-slate-700">
+                                <span class="text-gray-300 font-normal">29</span> <span class="text-gray-300 font-normal">30</span> <span class="text-gray-300 font-normal">31</span>
+                                <span class="p-1">1</span> <span class="p-1">2</span> <span class="p-1">3</span> <span class="text-red-500 p-1">4</span>
+                                
+                                <span class="p-1">5</span> 
+                                <span class="bg-black text-[#D4AF37] rounded-full shadow-lg transform scale-110 flex items-center justify-center relative">
+                                    6
+                                    <span class="absolute -top-1 -right-1 w-2 h-2 bg-red-500 rounded-full animate-ping"></span>
+                                </span> 
+                                <span class="p-1">7</span> 
+                                <span class="bg-[#D4AF37] text-white rounded-full shadow flex items-center justify-center">8</span> 
+                                <span class="p-1">9</span> <span class="p-1">10</span> <span class="text-red-500 p-1">11</span>
+    
+                                <span class="p-1">12</span> <span class="bg-[#D4AF37] text-white rounded-full shadow flex items-center justify-center">13</span> <span class="p-1">14</span> <span class="p-1">15</span> <span class="p-1">16</span> <span class="p-1">17</span> <span class="text-red-500 p-1">18</span>
+    
+                                <span class="p-1">19</span> <span class="p-1">20</span> <span class="p-1">21</span> <span class="p-1">22</span> <span class="p-1">23</span> <span class="p-1">24</span> <span class="text-red-500 p-1">25</span>
+                            </div>
+    
+                            <div class="mt-8 flex flex-col gap-2 text-xs font-medium text-slate-500">
+                                <div class="flex items-center gap-2">
+                                    <span class="w-3 h-3 bg-black rounded-full border border-[#D4AF37]"></span>
+                                    <span>Kick-off (Démarrage)</span>
+                                </div>
+                                <div class="flex items-center gap-2">
+                                    <span class="w-3 h-3 bg-[#D4AF37] rounded-full"></span>
+                                    <span>Live Trading (Zoom)</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="mt-auto text-center">
+                             <p class="text-[10px] text-gray-400 font-mono">PAGE 01</p>
+                        </div>
+                    </div>
+    
+                    <div class="w-1/2 h-full p-4 md:p-10 page-shadow-right flex flex-col justify-center items-center relative bg-white">
+                        
+                        <div class="absolute inset-0 flex items-center justify-center opacity-[0.03] pointer-events-none">
+                            <svg class="w-64 h-64" viewBox="0 0 100 100" fill="black">
+                                <circle cx="50" cy="50" r="40" />
+                            </svg>
+                        </div>
+    
+                        <div class="relative z-10 text-center">
+                            <h4 class="text-xl font-black text-slate-900 mb-6 uppercase tracking-wide font-heading">Votre Mission</h4>
+                            
+                            <div class="text-left space-y-6 max-w-xs mx-auto">
+                                <div class="flex gap-4">
+                                    <span class="text-2xl font-bold text-[#D4AF37] font-serif">1</span>
+                                    <div>
+                                        <p class="font-bold text-slate-900 text-sm uppercase">Installation</p>
+                                        <p class="text-xs text-slate-500 leading-relaxed">Setup des graphiques, configuration du journal de trading et accès Discord.</p>
+                                    </div>
+                                </div>
+                                <div class="flex gap-4">
+                                    <span class="text-2xl font-bold text-[#D4AF37] font-serif">2</span>
+                                    <div>
+                                        <p class="font-bold text-slate-900 text-sm uppercase">Immersion</p>
+                                        <p class="text-xs text-slate-500 leading-relaxed">10H de formation vidéo intensive pour maîtriser la Smart Money.</p>
+                                    </div>
+                                </div>
+                                <div class="flex gap-4">
+                                    <span class="text-2xl font-bold text-[#D4AF37] font-serif">3</span>
+                                    <div>
+                                        <p class="font-bold text-slate-900 text-sm uppercase">Exécution</p>
+                                        <p class="text-xs text-slate-500 leading-relaxed">Premiers trades en direct sous la supervision du mentor.</p>
+                                    </div>
+                                </div>
+                            </div>
+    
+                            <div class="mt-10 pt-8 border-t border-gray-100 w-full">
+                                <div class="font-serif italic text-3xl text-[#D4AF37] transform -rotate-6">
+                                    Quantum Elite
+                                </div>
+                                <p class="text-[10px] text-gray-400 mt-2 uppercase tracking-widest">Approved Protocol</p>
+                            </div>
+                        </div>
+                        
+                        <div class="mt-auto text-center w-full">
+                             <p class="text-[10px] text-gray-400 font-mono">PAGE 02</p>
+                        </div>
+                    </div>
+    
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="revelation" class="py-24 bg-white relative overflow-hidden text-slate-900">
+        <div class="absolute top-0 left-0 w-1/2 h-full bg-gradient-to-r from-[#D4AF37]/10 to-transparent pointer-events-none"></div>
+        
+        <div class="container mx-auto px-6 max-w-7xl relative z-10">
+            <div class="flex flex-col md:flex-row items-center gap-16">
+                <div class="md:w-1/2">
+                    <h2 class="text-4xl md:text-5xl font-black text-[#C6A355] uppercase mb-8 leading-tight tracking-wide font-heading">
+                        VOUS L'AVEZ ENFIN <br>TROUVÉ
+                    </h2>
+                    <div class="space-y-6 text-lg text-gray-700 leading-relaxed font-medium">
+                        <p>La stratégie à adopter pour atteindre la liberté financière via le Trading en quelques mois, même avec un petit capital.</p>
+                        <div class="space-y-2 border-l-4 border-[#D4AF37] pl-4">
+                            <p class="font-bold text-black">Est-ce que c'est vraiment faisable ? <span class="text-[#C6A355]">Oui !</span></p>
+                            <p class="font-bold text-black">Est-ce que tout le monde va y arriver ? <span class="text-[#C6A355]">Non...</span></p>
+                        </div>
+                        <p>Ça peut paraître contradictoire mais... les gens ne veulent pas devenir riches lentement. Ils veulent devenir pauvres rapidement.</p>
+                        <p class="font-bold text-[#C6A355] uppercase text-sm tracking-widest pt-4">À vous de voir où est-ce que vous vous voyez d'ici 5 ans.</p>
+                    </div>
+                    
+                    <a href="#offer" class="mt-8 inline-flex items-center gap-3 bg-[#C6A355] text-white px-8 py-4 font-bold uppercase tracking-widest hover:bg-[#a68640] transition rounded shadow-xl">
+                        Rejoindre le Challenge
+                    </a>
+                </div>
+
+                <div class="md:w-1/2 relative flex justify-center">
+                    <div class="absolute w-[400px] h-[400px] rounded-full border border-[#D4AF37]/30 flex items-center justify-center animate-[spin_40s_linear_infinite]">
+                        <svg viewBox="0 0 100 100" class="w-full h-full opacity-30 fill-[#D4AF37]">
+                            <path id="circlePath" d="M 50, 50 m -37, 0 a 37,37 0 1,1 74,0 a 37,37 0 1,1 -74,0" fill="transparent" />
+                            <text font-size="2.6" font-weight="bold"><textPath href="#circlePath">DISCIPLINE • EXECUTION • FREEDOM • WEALTH • </textPath></text>
+                        </svg>
+                    </div>
+                    <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" class="relative z-10 w-2/3 grayscale hover:grayscale-0 transition duration-500 drop-shadow-2xl">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-32 bg-[#050505] relative overflow-hidden">
+        <div class="container mx-auto px-6 max-w-5xl relative z-10">
+            <div class="text-center mb-20">
+                <span class="text-[#D4AF37] text-xs font-bold uppercase tracking-widest">Le Processus de 90 Jours</span>
+                <h2 class="text-4xl md:text-5xl mt-4 text-white font-heading">DE NOVICE À <span class="text-gold">GESTIONNAIRE</span></h2>
+            </div>
+
+            <div class="relative space-y-12">
+                <div class="absolute left-4 md:left-1/2 top-0 bottom-0 w-[1px] bg-gradient-to-b from-transparent via-[#D4AF37] to-transparent md:-translate-x-1/2"></div>
+
+                <div class="flex flex-col md:flex-row items-center justify-between relative">
+                    <div class="md:w-5/12 text-left md:text-right pl-12 md:pl-0 md:pr-12">
+                        <h3 class="text-2xl text-white font-heading">PHASE 1 : FONDATIONS</h3>
+                        <p class="text-[#D4AF37] text-xs uppercase mb-2">Mois 1</p>
+                        <p class="text-gray-400 text-sm">Déconstruction des mauvaises habitudes. Maîtrise de la Structure de Marché et Liquidité.</p>
+                    </div>
+                    <div class="absolute left-0 md:left-1/2 w-8 h-8 bg-black border border-[#D4AF37] rounded-full flex items-center justify-center text-[#D4AF37] text-xs font-bold md:-translate-x-1/2">01</div>
+                    <div class="hidden md:block md:w-5/12"></div>
+                </div>
+
+                <div class="flex flex-col md:flex-row items-center justify-between relative">
+                    <div class="hidden md:block md:w-5/12"></div>
+                    <div class="absolute left-0 md:left-1/2 w-8 h-8 bg-black border border-[#D4AF37] rounded-full flex items-center justify-center text-[#D4AF37] text-xs font-bold md:-translate-x-1/2">02</div>
+                    <div class="md:w-5/12 text-left pl-12">
+                        <h3 class="text-2xl text-white font-heading">PHASE 2 : PRÉCISION</h3>
+                        <p class="text-[#D4AF37] text-xs uppercase mb-2">Mois 2</p>
+                        <p class="text-gray-400 text-sm">Déploiement de la stratégie "Alpha". Backtesting intensif et validation en démo.</p>
+                    </div>
+                </div>
+
+                <div class="flex flex-col md:flex-row items-center justify-between relative">
+                    <div class="md:w-5/12 text-left md:text-right pl-12 md:pl-0 md:pr-12">
+                        <h3 class="text-2xl text-white font-heading">PHASE 3 : FINANCEMENT</h3>
+                        <p class="text-[#D4AF37] text-xs uppercase mb-2">Mois 3</p>
+                        <p class="text-gray-400 text-sm">Passage des challenges Prop Firm. Gestion psychologique du capital réel.</p>
+                    </div>
+                    <div class="absolute left-0 md:left-1/2 w-8 h-8 bg-[#D4AF37] text-black rounded-full flex items-center justify-center text-xs font-bold md:-translate-x-1/2">03</div>
+                    <div class="hidden md:block md:w-5/12"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-20 bg-black border-y border-white/10">
+        <div class="container mx-auto px-6 max-w-6xl flex flex-col md:flex-row items-center gap-12">
+            <div class="md:w-1/2 relative">
+                <div class="relative w-full aspect-square max-w-sm mx-auto bg-gradient-to-br from-[#1a1a1a] to-black border border-[#D4AF37] rounded-xl flex items-center justify-center shadow-[0_0_50px_rgba(212,175,55,0.15)] transform rotate-6 hover:rotate-0 transition duration-700">
+                    <div class="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 w-24 h-24 bg-[#D4AF37] blur-[40px] rounded-full"></div>
+                    <div class="text-center">
+                        <svg class="w-20 h-20 text-[#D4AF37] mx-auto mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"/></svg>
+                        <p class="font-heading text-white text-xl">THE BLACK BOX</p>
+                    </div>
+                </div>
+            </div>
+            <div class="md:w-1/2">
+                <h2 class="text-3xl md:text-4xl text-white font-heading mb-6">AYEZ LA CHANCE DE GAGNER <br><span class="text-gold">DES CADEAUX EXCLUSIFS</span></h2>
+                <p class="text-gray-400 mb-8">
+                    En rejoignant cette cohorte, vous participez automatiquement au tirage au sort pour gagner des outils de trading professionnels.
+                </p>
+                <ul class="space-y-4">
+                    <li class="flex items-center gap-4 text-white border-b border-white/10 pb-2">
+                        <span class="text-[#D4AF37]">✦</span> 1x MacBook Pro M3 (Station de Trading)
+                    </li>
+                    <li class="flex items-center gap-4 text-white border-b border-white/10 pb-2">
+                        <span class="text-[#D4AF37]">✦</span> 3x Comptes Financés (50k$)
+                    </li>
+                    <li class="flex items-center gap-4 text-white border-b border-white/10 pb-2">
+                        <span class="text-[#D4AF37]">✦</span> 5x Abonnements TradingView Premium
+                    </li>
+                </ul>
+                <p class="text-xs text-gray-500 mt-6 italic">La seule condition : Être présent et discipliné.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="offer" class="py-32 bg-[#050505] relative">
+        <div class="container mx-auto px-6 max-w-3xl relative z-10">
+            <div class="glass-panel p-1 rounded-2xl">
+                <div class="bg-black/90 rounded-xl p-8 md:p-12 border border-[#D4AF37]/30 text-center relative overflow-hidden">
+                    
+                    <div class="absolute top-0 right-0 bg-[#D4AF37] text-black text-[10px] font-bold px-3 py-1 uppercase">Offre Limitée</div>
+
+                    <h2 class="text-4xl text-white font-heading mb-2">ACCÈS QUANTUM</h2>
+                    <p class="text-[#D4AF37] text-xs tracking-[0.3em] uppercase mb-10">Cohorte Février 2024</p>
+
+                    <div class="space-y-4 text-left mb-10">
+                        <div class="flex justify-between items-center p-3 border-b border-white/10">
+                            <span class="text-white font-medium">Mentorat Live (12 Semaines)</span>
+                            <span class="text-gray-500 line-through">5,000 €</span>
+                        </div>
+                        <div class="flex justify-between items-center p-3 border-b border-white/10">
+                            <span class="text-white font-medium">Système "Alpha" (Indicateurs)</span>
+                            <span class="text-gray-500 line-through">1,500 €</span>
+                        </div>
+                        <div class="flex justify-between items-center p-3 border-b border-white/10">
+                            <span class="text-white font-medium">Accès War Room (Discord)</span>
+                            <span class="text-gray-500 line-through">997 €</span>
+                        </div>
+                        <div class="flex justify-between items-center p-3 bg-[#D4AF37]/10 border border-[#D4AF37]/20 rounded">
+                            <span class="text-[#D4AF37] font-bold">BONUS: Module Fiscalité & LLC</span>
+                            <span class="text-[#D4AF37] font-bold">OFFERT</span>
+                        </div>
+                    </div>
+
+                    <div class="mb-8">
+                        <p class="text-gray-500 text-xs uppercase tracking-widest mb-2">Investissement Unique</p>
+                        <div class="text-6xl font-heading text-white tracking-tight">997 €</div>
+                        <p class="text-gray-500 text-xs mt-2">ou 3x 350€</p>
+                    </div>
+
+                    <a href="#apply" class="btn-primary w-full py-5 rounded text-lg shadow-[0_0_30px_rgba(212,175,55,0.3)] block">
+                        RÉSERVER MA PLACE
+                    </a>
+                    
+                    <div class="flex justify-center gap-4 mt-6 opacity-50 grayscale">
+                        <div class="h-6 w-10 bg-white/20 rounded"></div>
+                        <div class="h-6 w-10 bg-white/20 rounded"></div>
+                        <div class="h-6 w-10 bg-white/20 rounded"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-20 bg-white border-t border-gray-200">
+        <div class="container mx-auto px-6 max-w-3xl">
+            <h2 class="text-3xl font-heading text-black text-center mb-10">QUESTIONS FRÉQUENTES</h2>
+            <div class="space-y-3">
+                <details class="group border border-gray-200 rounded p-4 open:bg-gray-50 transition cursor-pointer">
+                    <summary class="flex justify-between font-bold text-slate-800 list-none">
+                        Est-ce adapté aux débutants ?
+                        <span class="transition group-open:rotate-180">▼</span>
+                    </summary>
+                    <p class="text-gray-600 mt-4 text-sm leading-relaxed">Oui. Nous partons de zéro. C'est même mieux de ne pas avoir de mauvaises habitudes.</p>
+                </details>
+                <details class="group border border-gray-200 rounded p-4 open:bg-gray-50 transition cursor-pointer">
+                    <summary class="flex justify-between font-bold text-slate-800 list-none">
+                        Quel capital faut-il ?
+                        <span class="transition group-open:rotate-180">▼</span>
+                    </summary>
+                    <p class="text-gray-600 mt-4 text-sm leading-relaxed">Aucun. Nous vous formons pour réussir les examens "Prop Firm" qui vous donnent accès à un capital (10k$ à 100k$).</p>
+                </details>
+            </div>
+        </div>
+    </section>
+
+    <section id="apply" class="py-20 bg-[#020202] text-center border-t border-white/10">
+        <div class="container mx-auto px-6 max-w-2xl">
+            <h2 class="text-3xl text-white font-heading mb-6">PRÊT À REJOINDRE L'ÉLITE ?</h2>
+            <a href="https://wa.me/212600000000" class="inline-flex items-center gap-3 border border-white/20 px-8 py-4 text-white hover:bg-white hover:text-black transition duration-300 uppercase tracking-widest text-sm">
+                Candidater via WhatsApp
+            </a>
+        </div>
+    </section>
+
+    <footer class="bg-black py-8 border-t border-white/10 text-center text-[10px] text-gray-600 font-mono">
+        <span class="text-xl font-heading font-bold text-white tracking-wider mb-4 block">CLICKBOOST</span>
+        <p>© 2024 QUANTUM CAPITAL. NOT FINANCIAL ADVICE.</p>
+    </footer>
+
+</body>
+</html>

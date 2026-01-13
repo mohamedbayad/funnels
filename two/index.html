@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TempSnug™ | Clinical Knee Therapy</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;700;900&display=swap');
+        
+        body { 
+            font-family: 'Outfit', sans-serif; 
+            background-color: #050505; 
+            color: #ffffff;
+            overflow-x: hidden;
+        }
+
+        /* TEXTURES & GLOWS */
+        .bg-grid {
+            background-image: linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+            background-size: 40px 40px;
+        }
+        .glow-red {
+            position: absolute;
+            background: radial-gradient(circle, rgba(220, 38, 38, 0.3) 0%, rgba(0,0,0,0) 70%);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: -1;
+            filter: blur(80px);
+        }
+
+        /* GLASSMOPHISM */
+        .glass-panel {
+            background: rgba(20, 20, 20, 0.6);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        /* FORM STYLES */
+        .input-field {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: white;
+            padding: 12px;
+            border-radius: 8px;
+            width: 100%;
+            outline: none;
+            transition: all 0.3s;
+        }
+        .input-field:focus {
+            border-color: #dc2626;
+            background: rgba(220, 38, 38, 0.05);
+        }
+
+        /* ANIMATIONS */
+        .pulse-slow { animation: pulse-glow 3s infinite; }
+        @keyframes pulse-glow {
+            0% { box-shadow: 0 0 0 0 rgba(220, 38, 38, 0.4); }
+            70% { box-shadow: 0 0 0 20px rgba(220, 38, 38, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(220, 38, 38, 0); }
+        }
+    </style>
+</head>
+<body class="bg-[#050505] text-white antialiased">
+
+    <div class="bg-red-700 text-center py-2 text-[10px] uppercase font-bold tracking-[0.2em] sticky top-0 z-50">
+        ⚠️ 50% OFF Sale Ends Tonight
+    </div>
+
+    <nav class="fixed top-10 w-full z-40 px-4">
+        <div class="max-w-6xl mx-auto glass-panel rounded-full h-16 flex items-center justify-between px-8 shadow-2xl">
+            <div class="font-black text-xl tracking-tighter">TEMP<span class="text-red-600">SNUG</span></div>
+            <button onclick="scrollToForm()" class="bg-white text-black px-6 py-2 rounded-full font-bold text-xs uppercase hover:bg-gray-200 transition">
+                Order Now
+            </button>
+        </div>
+    </nav>
+
+    <section class="min-h-screen relative flex items-center justify-center pt-20 overflow-hidden bg-grid">
+        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-red-600/20 blur-[120px] rounded-full"></div>
+
+        <div class="max-w-7xl mx-auto px-4 grid lg:grid-cols-2 gap-12 items-center relative z-10">
+            <div class="text-center lg:text-left order-2 lg:order-1">
+                <div class="inline-flex items-center gap-2 border border-red-500/30 bg-red-500/10 px-4 py-1 rounded-full mb-6">
+                    <span class="w-2 h-2 bg-red-500 rounded-full animate-pulse"></span>
+                    <span class="text-xs font-bold text-red-400 uppercase tracking-widest">Clinical Grade Therapy</span>
+                </div>
+                <h1 class="text-5xl md:text-7xl font-black leading-[0.9] tracking-tighter mb-6">
+                    KILL KNEE PAIN <br> 
+                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-red-500 to-red-800">AT THE SOURCE.</span>
+                </h1>
+                <p class="text-lg text-gray-400 mb-8 max-w-lg mx-auto lg:mx-0 leading-relaxed">
+                    Stop masking pain with pills. The <strong>TempSnug™</strong> uses <span class="text-white font-bold">Red Light Photobiomodulation + Heat</span> to regenerate cartilage and eliminate arthritis stiffness in 15 minutes.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+                    <button onclick="scrollToForm()" class="bg-red-600 hover:bg-red-700 text-white px-10 py-4 rounded-full font-bold text-lg transition shadow-[0_0_30px_rgba(220,38,38,0.5)] uppercase tracking-wide">
+                        Get 50% Off Now
+                    </button>
+                </div>
+            </div>
+            <div class="relative flex justify-center order-1 lg:order-2">
+                <div class="relative z-10 w-full max-w-lg transform hover:scale-105 transition duration-500">
+                    <img src="./img/1.png" alt="Red Light Knee Massager" class="w-full rounded-3xl drop-shadow-2xl border border-white/10">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-20 bg-[#0a0a0a] border-t border-white/5">
+        <div class="max-w-5xl mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12">Does This Sound Like You?</h2>
+            <div class="grid md:grid-cols-3 gap-6">
+                <div class="glass-panel p-6 rounded-2xl hover:border-red-500/40 transition text-center">
+                    <div class="w-16 h-16 mx-auto bg-red-900/20 rounded-full flex items-center justify-center mb-4">
+                        <i class="fas fa-stairs text-2xl text-red-500"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Stairs are a Nightmare</h3>
+                    <p class="text-gray-400 text-sm">You feel a sharp, stabbing pain every time you walk up or down stairs.</p>
+                </div>
+                <div class="glass-panel p-6 rounded-2xl hover:border-red-500/40 transition text-center">
+                    <div class="w-16 h-16 mx-auto bg-red-900/20 rounded-full flex items-center justify-center mb-4">
+                        <i class="fas fa-bed text-2xl text-red-500"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Morning Stiffness</h3>
+                    <p class="text-gray-400 text-sm">It takes you 20 minutes to "warm up" your knees when you wake up.</p>
+                </div>
+                <div class="glass-panel p-6 rounded-2xl hover:border-red-500/40 transition text-center">
+                    <div class="w-16 h-16 mx-auto bg-red-900/20 rounded-full flex items-center justify-center mb-4">
+                        <i class="fas fa-pills text-2xl text-red-500"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Tired of Painkillers</h3>
+                    <p class="text-gray-400 text-sm">You want a natural solution without destroying your stomach with pills.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-24 relative overflow-hidden">
+        <div class="max-w-6xl mx-auto px-4 grid md:grid-cols-2 gap-16 items-center relative z-10">
+            <div class="rounded-2xl overflow-hidden border border-white/10 shadow-2xl">
+                <img src="./img/2.png" alt="Red Light Penetration Diagram" class="w-full h-full object-cover">
+            </div>
+            <div>
+                <h2 class="text-3xl md:text-5xl font-black mb-6">Deep Tissue <span class="text-red-600">Regeneration.</span></h2>
+                <p class="text-gray-400 text-lg mb-6 leading-relaxed">
+                    Most solutions just mask the pain. TempSnug™ penetrates 3cm deep to trigger actual healing.
+                </p>
+                <ul class="space-y-4">
+                    <li class="flex items-center gap-4">
+                        <i class="fas fa-check-circle text-red-500 text-xl"></i>
+                        <span class="text-gray-200">Stimulates cartilage repair</span>
+                    </li>
+                    <li class="flex items-center gap-4">
+                        <i class="fas fa-check-circle text-red-500 text-xl"></i>
+                        <span class="text-gray-200">Increases blood circulation by 400%</span>
+                    </li>
+                    <li class="flex items-center gap-4">
+                        <i class="fas fa-check-circle text-red-500 text-xl"></i>
+                        <span class="text-gray-200">Melts away stiffness in 15 mins</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-12 px-4 bg-gradient-to-br from-red-900 via-black to-red-950 border-y border-red-600 relative overflow-hidden shadow-[0_0_50px_rgba(220,38,38,0.5)] z-20">
+        <div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] opacity-30"></div>
+        <div class="absolute top-0 left-0 w-full h-full bg-red-600/10 animate-pulse"></div>
+
+        <div class="max-w-4xl mx-auto text-center relative z-10">
+            <h3 class="text-xl md:text-3xl font-black text-white uppercase italic tracking-tighter mb-2">
+                ⚠️ Warning: High Demand
+            </h3>
+            <p class="text-red-200 text-sm mb-8 font-medium">Your 50% Discount code <span class="bg-white text-black px-1 font-bold">TEMP50</span> expires in:</p>
+            
+            <div class="flex justify-center items-center gap-4 md:gap-6 mb-8">
+                <div class="flex flex-col">
+                    <div class="bg-black/80 text-white text-5xl md:text-7xl font-black py-4 px-4 md:px-8 rounded-xl border-2 border-red-600 shadow-[0_0_30px_rgba(220,38,38,0.4)] backdrop-blur-md font-mono" id="minutes1">
+                        15
+                    </div>
+                    <span class="text-[10px] md:text-xs text-red-500 uppercase font-bold mt-2 tracking-widest">Minutes</span>
+                </div>
+                
+                <span class="text-4xl md:text-6xl font-black text-white/20 animate-pulse">:</span>
+
+                <div class="flex flex-col">
+                    <div class="bg-black/80 text-white text-5xl md:text-7xl font-black py-4 px-4 md:px-8 rounded-xl border-2 border-red-600 shadow-[0_0_30px_rgba(220,38,38,0.4)] backdrop-blur-md font-mono" id="seconds1">
+                        00
+                    </div>
+                    <span class="text-[10px] md:text-xs text-red-500 uppercase font-bold mt-2 tracking-widest">Seconds</span>
+                </div>
+            </div>
+
+            <button onclick="scrollToForm()" class="group relative inline-flex items-center justify-center gap-3 bg-white text-red-700 text-xl md:text-2xl font-black py-4 px-12 rounded-full shadow-[0_0_40px_rgba(255,255,255,0.4)] hover:scale-105 hover:bg-gray-100 transition duration-300 animate-bounce">
+                CLAIM MY DISCOUNT NOW
+                <i class="fas fa-arrow-down group-hover:translate-y-1 transition"></i>
+            </button>
+            <p class="mt-4 text-[10px] text-gray-400 uppercase tracking-widest">Don't let the price go back to $130</p>
+        </div>
+    </section>
+
+    <section class="py-20 px-4 bg-[#0a0a0a]">
+        <div class="max-w-4xl mx-auto">
+            <h2 class="text-3xl font-bold text-center mb-12">Why TempSnug™ Wins</h2>
+            <div class="border border-white/10 rounded-2xl overflow-hidden">
+                <div class="grid grid-cols-3 bg-white/5 p-4 text-center font-bold text-sm uppercase tracking-wider">
+                    <div class="text-gray-500">Feature</div>
+                    <div class="text-gray-500">Heating Pads</div>
+                    <div class="text-red-500 text-lg">TempSnug™</div>
+                </div>
+                <div class="grid grid-cols-3 p-4 text-center border-t border-white/5 items-center">
+                    <div class="text-gray-400 text-sm">Technology</div>
+                    <div class="text-gray-500 text-sm">Surface Heat Only</div>
+                    <div class="text-white font-bold">Red Light + Heat</div>
+                </div>
+                <div class="grid grid-cols-3 p-4 text-center border-t border-white/5 items-center">
+                    <div class="text-gray-400 text-sm">Portability</div>
+                    <div class="text-gray-500 text-sm">Needs Wall Plug</div>
+                    <div class="text-white font-bold">100% Cordless</div>
+                </div>
+                <div class="grid grid-cols-3 p-4 text-center border-t border-white/5 items-center">
+                    <div class="text-gray-400 text-sm">Target Area</div>
+                    <div class="text-gray-500 text-sm">Flat Surface</div>
+                    <div class="text-white font-bold">360° Joint Wrap</div>
+                </div>
+                <div class="grid grid-cols-3 p-4 text-center border-t border-white/5 items-center bg-red-900/10">
+                    <div class="text-gray-400 text-sm">Result</div>
+                    <div class="text-gray-500 text-sm">Temporary</div>
+                    <div class="text-red-500 font-bold">Long-Term Relief</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-20 px-4">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-3xl font-bold text-center mb-12">Pain Relief in 3 Steps</h2>
+            <div class="grid md:grid-cols-3 gap-8 text-center">
+                <div>
+                    <img src="./img/6.png" class="rounded-xl mb-6 border border-white/10 shadow-lg h-48 w-full object-cover">
+                    <h3 class="text-xl font-bold mb-2">1. Strap It On</h3>
+                    <p class="text-gray-400 text-sm">Adjustable velcro fits any knee size comfortably.</p>
+                </div>
+                <div>
+                    <img src="./img/4.png" class="rounded-xl mb-6 border border-white/10 shadow-lg h-48 w-full object-cover">
+                    <h3 class="text-xl font-bold mb-2">2. Select Mode</h3>
+                    <p class="text-gray-400 text-sm">Choose from 6 heat levels and 3 vibration modes.</p>
+                </div>
+                <div>
+                    <img src="./img/3.png" class="rounded-xl mb-6 border border-white/10 shadow-lg h-48 w-full object-cover">
+                    <h3 class="text-xl font-bold mb-2">3. Relax & Recover</h3>
+                    <p class="text-gray-400 text-sm">Let the red light therapy work its magic for 15 mins.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-20 px-4 relative">
+        <div class="max-w-6xl mx-auto">
+            <div class="grid grid-cols-1 md:grid-cols-3 md:grid-rows-2 gap-6">
+                <div class="md:col-span-2 md:row-span-2 glass-panel rounded-3xl p-6 relative overflow-hidden group">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent z-10"></div>
+                    <img src="./img/7.png" class="absolute inset-0 w-full h-full object-cover opacity-60 group-hover:opacity-80 transition duration-700">
+                    <div class="relative z-20 h-full flex flex-col justify-end">
+                        <div class="bg-black/60 backdrop-blur p-4 rounded-xl border border-white/10 w-fit">
+                            <h3 class="text-2xl font-bold mb-1">3-in-1 Design</h3>
+                            <p class="text-gray-300 text-sm">Works on Knees, Shoulders & Elbows.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="glass-panel rounded-3xl p-6 flex flex-col justify-center text-center relative overflow-hidden">
+                    <img src="./img/4.png" class="absolute inset-0 w-full h-full object-cover opacity-20">
+                    <div class="relative z-10">
+                        <div class="text-4xl font-black text-red-500 mb-2">65°C</div>
+                        <p class="text-sm text-gray-300 font-bold">Deep Heat Penetration</p>
+                    </div>
+                </div>
+                <div class="glass-panel rounded-3xl p-6 flex flex-col justify-center text-center border-red-500/30">
+                    <i class="fas fa-stopwatch text-4xl text-white mb-4"></i>
+                    <h3 class="text-xl font-bold">Auto-Off</h3>
+                    <p class="text-xs text-gray-500 uppercase mt-2">Safety Timer Included</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-20 bg-[#0a0a0a]">
+        <div class="max-w-6xl mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12">10,000+ Happy Knees</h2>
+            <div class="grid md:grid-cols-3 gap-6">
+                <div class="bg-[#111] p-6 rounded-xl border border-white/5">
+                    <div class="text-yellow-500 text-xs mb-4"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                    <p class="text-gray-300 text-sm italic">"I canceled my surgery appointment. This device is a miracle."</p>
+                    <p class="text-gray-500 text-xs font-bold mt-4">- Ahmed K.</p>
+                </div>
+                <div class="bg-[#111] p-6 rounded-xl border border-white/5">
+                    <div class="text-yellow-500 text-xs mb-4"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                    <p class="text-gray-300 text-sm italic">"Great for my shoulder too. Cordless feature is very convenient."</p>
+                    <p class="text-gray-500 text-xs font-bold mt-4">- Sarah L.</p>
+                </div>
+                <div class="bg-[#111] p-6 rounded-xl border border-white/5">
+                    <div class="text-yellow-500 text-xs mb-4"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                    <p class="text-gray-300 text-sm italic">"Worth every penny. The heat gets really deep inside."</p>
+                    <p class="text-gray-500 text-xs font-bold mt-4">- Mike R.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="orderForm" class="py-24 px-4 relative overflow-hidden bg-black">
+        <div class="glow-red w-[800px] h-[800px] top-0 right-0 opacity-20"></div>
+        
+        <div class="max-w-6xl mx-auto flex flex-col md:flex-row gap-12 items-start">
+            
+            <div class="md:w-1/2 sticky top-20">
+                <img src="./img/1.png" class="w-full rounded-2xl shadow-2xl border border-white/10 mb-8">
+                
+                <div class="flex items-center justify-between mb-4">
+                    <h2 class="text-3xl font-black">TempSnug™ Relief Kit</h2>
+                    <div class="text-right">
+                        <span class="text-gray-500 line-through text-sm">$130.00</span>
+                        <div class="text-red-500 font-bold text-2xl">$65.00</div>
+                    </div>
+                </div>
+                
+                <ul class="space-y-3 mb-6">
+                    <li class="flex items-center gap-3 text-sm text-gray-300">
+                        <i class="fas fa-check text-green-500"></i> Free Express Shipping
+                    </li>
+                    <li class="flex items-center gap-3 text-sm text-gray-300">
+                        <i class="fas fa-check text-green-500"></i> Cash On Delivery (COD)
+                    </li>
+                    <li class="flex items-center gap-3 text-sm text-gray-300">
+                        <i class="fas fa-check text-green-500"></i> 1-Year Warranty Included
+                    </li>
+                </ul>
+                
+                <div class="bg-red-900/10 border border-red-500/20 p-4 rounded-xl text-center relative z-0 mb-14 md:mb-0">
+                    <p class="text-red-400 text-sm font-bold flex items-center justify-center gap-2">
+                        <i class="fas fa-fire animate-pulse"></i> High Demand: Only 7 Units Left at this price.
+                    </p>
+                </div>
+            </div>
+
+            <div class="md:w-1/2 w-full bg-[#111] p-8 rounded-3xl border border-white/10 shadow-2xl relative">
+                <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-red-600 to-red-900"></div>
+                <h3 class="text-2xl font-bold mb-6">Shipping Information</h3>
+                
+                <form id="codForm" onsubmit="handleOrder(event)" class="space-y-4">
+                    <div>
+                        <label class="block text-xs text-gray-500 uppercase font-bold mb-2">Full Name</label>
+                        <input type="text" placeholder="John Doe" required class="input-field">
+                    </div>
+                    
+                    <div>
+                        <label class="block text-xs text-gray-500 uppercase font-bold mb-2">Phone Number</label>
+                        <input type="tel" placeholder="06 XX XX XX XX" required class="input-field">
+                    </div>
+                    
+                    <div>
+                        <label class="block text-xs text-gray-500 uppercase font-bold mb-2">City</label>
+                        <select class="input-field bg-[#1a1a1a]">
+                            <option>Casablanca</option>
+                            <option>Rabat</option>
+                            <option>Marrakech</option>
+                            <option>Tanger</option>
+                            <option>Agadir</option>
+                            <option>Fes</option>
+                            <option>Other</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <label class="block text-xs text-gray-500 uppercase font-bold mb-2">Address</label>
+                        <textarea placeholder="Street, Appt number..." rows="2" required class="input-field"></textarea>
+                    </div>
+
+
+                    <div class="pt-4">
+                        <button type="submit" class="w-full bg-red-600 hover:bg-red-700 text-white font-bold py-5 rounded-xl text-lg uppercase tracking-wide shadow-[0_0_20px_rgba(220,38,38,0.4)] transition transform hover:scale-[1.02]">
+                            Complete Order - $65
+                        </button>
+                        <p class="text-center text-xs text-gray-500 mt-4 flex justify-center gap-2">
+                            <i class="fas fa-lock"></i> 256-Bit Secure SSL Encryption
+                        </p>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-black py-10 text-center border-t border-white/5 text-gray-600 text-xs">
+        <span class="text-xl font-heading font-bold text-white tracking-wider mb-4 block">CLICKBOOST</span>
+        <p>&copy; 2026 TempSnug Therapy. All rights reserved.</p>
+    </footer>
+
+    <div id="successModal" class="fixed inset-0 bg-black/95 backdrop-blur-md z-[70] hidden flex items-center justify-center p-4">
+        <div class="bg-[#111] border border-white/10 rounded-3xl max-w-md w-full p-8 text-center">
+            <div class="w-20 h-20 bg-green-500 rounded-full flex items-center justify-center mx-auto mb-6 shadow-[0_0_30px_#22c55e]">
+                <i class="fas fa-check text-4xl text-white"></i>
+            </div>
+            <h3 class="text-3xl font-black mb-2 text-white">Order Received!</h3>
+            <p class="text-gray-400 mb-8">Thank you! Our team will call you within 24 hours to confirm delivery.</p>
+            <button onclick="closeSuccess()" class="bg-white text-black font-bold py-3 px-8 rounded-full hover:bg-gray-200 transition">
+                Back to Home
+            </button>
+        </div>
+    </div>
+
+
+
+    <script>
+        // Scroll Logic
+        function scrollToForm() {
+            document.getElementById('orderForm').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // Timer Logic
+        function startTimer(duration, displayMinutes, displaySeconds) {
+            var timer = duration, minutes, seconds;
+            setInterval(function () {
+                minutes = parseInt(timer / 60, 10);
+                seconds = parseInt(timer % 60, 10);
+
+                minutes = minutes < 10 ? "0" + minutes : minutes;
+                seconds = seconds < 10 ? "0" + seconds : seconds;
+
+                displayMinutes.textContent = minutes;
+                displaySeconds.textContent = seconds;
+
+                if (--timer < 0) {
+                    timer = duration;
+                }
+            }, 1000);
+        }
+
+        window.onload = function () {
+            var duration = 60 * 15; // 15 Minutes
+            var displayMinutes = document.querySelector('#minutes1');
+            var displaySeconds = document.querySelector('#seconds1');
+            startTimer(duration, displayMinutes, displaySeconds);
+        };
+    </script>
+
+    <script>
+        function scrollToForm() {
+            document.getElementById('orderForm').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function handleOrder(e) {
+            e.preventDefault();
+            // Here you would usually send data to Google Sheets or Backend
+            // For now, we show the success modal
+            document.getElementById('successModal').classList.remove('hidden');
+        }
+
+        function closeSuccess() {
+            document.getElementById('successModal').classList.add('hidden');
+            document.getElementById('codForm').reset();
+        }
+    </script>
+</body>
+</html>

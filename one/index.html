@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>AI Agency Accelerator | System V2.0</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace'],
+                    },
+                    colors: {
+                        void: '#050507',     // Deepest Black
+                        panel: '#0E1116',    // Surface
+                        border: '#1F242F',   // Border
+                        primary: '#6366f1',  // Indigo
+                        accent: '#06b6d4',   // Cyan
+                        success: '#10b981',  // Emerald
+                    },
+                    backgroundImage: {
+                        'glow-gradient': 'conic-gradient(from 180deg at 50% 50%, #1F242F 0deg, #6366f1 180deg, #06b6d4 360deg)',
+                    },
+                    boxShadow: {
+                        'glow': '0 0 40px -10px rgba(99, 102, 241, 0.3)',
+                    },
+                    animation: {
+                        'scan': 'scan 2s ease-in-out infinite',
+                    },
+                    keyframes: {
+                        scan: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(100px)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { background-color: #050507; color: #fff; overflow-x: hidden; }
+        
+        /* Glassmorphism Utilities */
+        .glass-panel {
+            background: rgba(14, 17, 22, 0.6);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+        
+        /* Text Gradients */
+        .text-gradient-brand {
+            background: linear-gradient(to right, #818cf8, #22d3ee);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Grid Background */
+        .bg-grid-pattern {
+            background-image: linear-gradient(to right, #1f242f 1px, transparent 1px),
+                              linear-gradient(to bottom, #1f242f 1px, transparent 1px);
+            background-size: 40px 40px;
+            mask-image: linear-gradient(to bottom, black 40%, transparent 100%);
+        }
+    </style>
+</head>
+<body class="antialiased selection:bg-primary selection:text-white">
+
+    <nav class="fixed top-0 w-full z-50 border-b border-white/5 bg-void/80 backdrop-blur-xl">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 h-14 md:h-16 flex items-center justify-between">
+            <div class="flex items-center gap-2">
+                <div class="w-2 h-2 rounded-full bg-primary animate-pulse"></div>
+                <span class="font-bold tracking-tight text-sm md:text-base">Accelerator_OS</span>
+            </div>
+            <a href="#deploy" class="bg-white text-black hover:bg-gray-200 px-4 py-1.5 rounded text-xs md:text-sm font-bold transition">
+                Get Access
+            </a>
+        </div>
+    </nav>
+
+    <header class="pt-32 pb-10 md:pt-48 md:pb-20 px-4 relative overflow-hidden">
+        <div class="absolute inset-0 bg-grid-pattern opacity-20 pointer-events-none"></div>
+        <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[300px] md:w-[800px] h-[300px] md:h-[400px] bg-primary/20 blur-[120px] rounded-full pointer-events-none"></div>
+
+        <div class="max-w-5xl mx-auto text-center relative z-10">
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-primary/30 bg-primary/10 text-primary text-[10px] md:text-xs font-mono mb-8">
+                <span class="w-1.5 h-1.5 rounded-full bg-primary animate-pulse"></span>
+                <span>SYSTEM_UPDATE_READY: V2.4</span>
+            </div>
+
+            <h1 class="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-extrabold tracking-tight mb-6 md:mb-8 leading-[1.1]">
+                Scale Your Agency <br class="hidden md:block">
+                <span class="text-gradient-brand">On Autopilot.</span>
+            </h1>
+
+            <p class="text-base sm:text-lg md:text-xl text-gray-400 max-w-2xl mx-auto mb-10 md:mb-12 leading-relaxed px-4">
+                Deploy a fully automated AI service business. <br class="md:hidden"> No code. No employees. Just intelligent systems working 24/7.
+            </p>
+
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-4 px-4">
+                <button onclick="document.getElementById('deploy').scrollIntoView({behavior: 'smooth'})" class="w-full sm:w-auto px-8 py-4 bg-white text-black font-bold rounded-lg hover:bg-gray-200 transition-all shadow-[0_0_20px_rgba(255,255,255,0.3)] flex items-center justify-center gap-2 group">
+                    Start Deployment
+                    <svg class="w-4 h-4 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                </button>
+                <div class="flex items-center gap-2 text-xs md:text-sm text-gray-500">
+                    <svg class="w-4 h-4 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                    <span>Instant Access</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section class="py-12 px-4 md:px-6 relative z-20">
+        <div class="max-w-6xl mx-auto">
+            <div class="glass-panel rounded-2xl p-1 border-t border-white/10 shadow-[0_20px_40px_-10px_rgba(0,0,0,0.5)] bg-void/50 backdrop-blur-xl">
+                <div class="bg-white/5 px-4 py-2 flex justify-between items-center rounded-t-xl border-b border-white/5">
+                    <div class="flex items-center gap-2">
+                        <div class="flex gap-1.5">
+                            <div class="w-2.5 h-2.5 rounded-full bg-red-500/50"></div>
+                            <div class="w-2.5 h-2.5 rounded-full bg-yellow-500/50"></div>
+                            <div class="w-2.5 h-2.5 rounded-full bg-green-500/50"></div>
+                        </div>
+                        <span class="text-[10px] font-mono text-gray-500 uppercase tracking-widest ml-2">Network_Performance.log</span>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <div class="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse"></div>
+                        <span class="text-[10px] font-mono text-green-500">LIVE DATA</span>
+                    </div>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-4 divide-y md:divide-y-0 md:divide-x divide-white/10 bg-panel/40 rounded-b-xl">
+                    <div class="p-6 md:p-8 flex flex-col items-center text-center group hover:bg-white/5 transition duration-300">
+                        <p class="text-xs font-mono text-gray-500 mb-2 group-hover:text-primary transition-colors">TOTAL_STUDENT_REV</p>
+                        <h3 class="text-3xl md:text-4xl font-extrabold text-white tracking-tight mb-2">$14.2M+</h3>
+                        <div class="flex items-end gap-1 h-6 w-16 opacity-50"><div class="w-1 bg-primary/50 h-[40%]"></div><div class="w-1 bg-primary/50 h-[60%]"></div><div class="w-1 bg-primary/50 h-[30%]"></div><div class="w-1 bg-primary h-[80%]"></div><div class="w-1 bg-primary h-[100%]"></div></div>
+                    </div>
+                    <div class="p-6 md:p-8 flex flex-col items-center text-center group hover:bg-white/5 transition duration-300">
+                        <p class="text-xs font-mono text-gray-500 mb-2 group-hover:text-accent transition-colors">AVG_TIME_TO_SALE</p>
+                        <h3 class="text-3xl md:text-4xl font-extrabold text-white tracking-tight mb-2">12 Days</h3>
+                        <div class="w-full max-w-[80px] h-1.5 bg-gray-700 rounded-full mt-2 overflow-hidden"><div class="h-full bg-accent w-[85%] rounded-full shadow-[0_0_10px_#06b6d4]"></div></div>
+                    </div>
+                    <div class="p-6 md:p-8 flex flex-col items-center text-center group hover:bg-white/5 transition duration-300">
+                        <p class="text-xs font-mono text-gray-500 mb-2 group-hover:text-success transition-colors">SUCCESS_RATE</p>
+                        <h3 class="text-3xl md:text-4xl font-extrabold text-white tracking-tight mb-2">94.8%</h3>
+                        <p class="text-[10px] text-success bg-success/10 px-2 py-0.5 rounded border border-success/20">▲ 4.2% vs Industry</p>
+                    </div>
+                    <div class="p-6 md:p-8 flex flex-col items-center text-center group hover:bg-white/5 transition duration-300">
+                        <p class="text-xs font-mono text-gray-500 mb-2">ACTIVE_NODES</p>
+                        <h3 class="text-3xl md:text-4xl font-extrabold text-white tracking-tight mb-2">1,240</h3>
+                        <div class="flex -space-x-2 mt-2"><div class="w-6 h-6 rounded-full bg-gray-600 border border-black"></div><div class="w-6 h-6 rounded-full bg-gray-500 border border-black"></div><div class="w-6 h-6 rounded-full bg-gray-400 border border-black"></div><div class="w-6 h-6 rounded-full bg-gray-800 border border-black flex items-center justify-center text-[8px] text-white font-mono">+1k</div></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="border-y border-white/5 bg-panel/50 py-8 overflow-hidden">
+        <div class="max-w-7xl mx-auto px-6 text-center">
+            <p class="text-[10px] md:text-xs font-mono text-gray-600 uppercase tracking-widest mb-6">Technologies Integrated</p>
+            <div class="flex flex-wrap justify-center gap-8 md:gap-16 opacity-40 grayscale">
+                <span class="text-xl font-bold font-sans">OpenAI</span>
+                <span class="text-xl font-bold font-sans">Anthropic</span>
+                <span class="text-xl font-bold font-sans">Midjourney</span>
+                <span class="text-xl font-bold font-sans">Stripe</span>
+                <span class="text-xl font-bold font-sans">Zapier</span>
+            </div>
+        </div>
+    </div>
+
+    <section class="py-20 md:py-32 px-4 md:px-6">
+        <div class="max-w-6xl mx-auto">
+            <div class="grid md:grid-cols-2 gap-12 md:gap-20 items-center">
+                <div class="order-2 md:order-1">
+                    <h2 class="text-3xl md:text-4xl font-bold mb-6">The Old Operating System is <span class="text-red-500">Deprecated.</span></h2>
+                    <div class="space-y-6 text-gray-400 text-sm md:text-base leading-relaxed">
+                        <p>Most agencies run on "Manual_Labor.exe". You sell your time. You fulfill the work. You burn out. It is a linear model in an exponential world.</p>
+                        <ul class="space-y-3 mt-4">
+                            <li class="flex items-center gap-3 text-red-400"><svg class="w-5 h-5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg> Income capped by hours worked</li>
+                            <li class="flex items-center gap-3 text-red-400"><svg class="w-5 h-5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg> High employee overhead</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="order-1 md:order-2 relative">
+                    <div class="absolute -inset-1 bg-gradient-to-r from-red-500/20 to-orange-500/20 rounded-xl blur-lg"></div>
+                    <div class="glass-panel rounded-xl p-6 border border-red-500/20 relative">
+                        <div class="flex items-center gap-2 mb-4 border-b border-white/5 pb-4">
+                            <div class="w-3 h-3 rounded-full bg-red-500"></div>
+                            <div class="w-3 h-3 rounded-full bg-yellow-500"></div>
+                            <div class="w-3 h-3 rounded-full bg-green-500"></div>
+                            <span class="ml-auto font-mono text-xs text-red-400">Error 503: Bandwidth Exceeded</span>
+                        </div>
+                        <div class="font-mono text-xs md:text-sm space-y-2 text-gray-500">
+                            <p><span class="text-purple-400">function</span> <span class="text-blue-400">manualAgency</span>() {</p>
+                            <p class="pl-4">while(awake) {</p>
+                            <p class="pl-8 text-gray-400">write_emails();</p>
+                            <p class="pl-8 text-red-400">// ERROR: No time left for sales</p>
+                            <p class="pl-8 text-red-400">bank_balance--;</p>
+                            <p class="pl-4">}</p>
+                            <p>}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-20 md:py-32 px-4 md:px-6 bg-panel/30 border-y border-white/5">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-16">
+                <span class="text-primary font-mono text-xs tracking-wider uppercase">Architecture</span>
+                <h2 class="text-3xl md:text-5xl font-bold mt-2">The 3-Core Processor</h2>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="glass-panel p-8 rounded-2xl hover:border-primary/50 transition duration-300 group">
+                    <div class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center text-primary mb-6 group-hover:scale-110 transition">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-2">1. Discovery</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed">We don't target saturated markets. We use specific search algorithms to find "boring businesses" with high cash flow.</p>
+                </div>
+                <div class="glass-panel p-8 rounded-2xl border-primary/30 relative overflow-hidden group">
+                    <div class="absolute inset-0 bg-primary/5 group-hover:bg-primary/10 transition"></div>
+                    <div class="relative z-10">
+                        <div class="w-12 h-12 bg-primary rounded-lg flex items-center justify-center text-white mb-6 shadow-glow">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.384-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"></path></svg>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-2">2. Automation</h3>
+                        <p class="text-gray-300 text-sm leading-relaxed">Stop fulfilling services. Deploy my JSON Agent Files. These bots write copy, design ads, and handle support 24/7.</p>
+                    </div>
+                </div>
+                <div class="glass-panel p-8 rounded-2xl hover:border-primary/50 transition duration-300 group">
+                    <div class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center text-primary mb-6 group-hover:scale-110 transition">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path></svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-2">3. Scale</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed">Inbound attraction systems. We set up automated LinkedIn & Email traps that bring qualified leads to you.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-24 px-4 md:px-6 relative overflow-hidden">
+        <div class="max-w-4xl mx-auto">
+            <div class="text-center mb-20">
+                <span class="text-blue-500 font-mono text-xs tracking-widest uppercase">Installation Process</span>
+                <h2 class="text-4xl md:text-5xl font-bold mt-3 text-white">Deployment Schedule</h2>
+            </div>
+    
+            <div class="relative">
+                <div class="absolute left-[19px] md:left-1/2 top-0 bottom-0 w-[2px] bg-blue-900/50 md:-translate-x-1/2"></div>
+                <div class="absolute left-[19px] md:left-1/2 top-0 h-1/2 w-[2px] bg-gradient-to-b from-blue-500 to-transparent md:-translate-x-1/2"></div>
+    
+                <div class="relative z-10 mb-16 flex flex-col md:flex-row items-start md:items-center gap-8 group">
+                    <div class="w-full md:w-1/2 md:text-right md:pr-12 pl-12 md:pl-0 pt-2">
+                        <h3 class="text-2xl font-bold text-white mb-2">Phase 1: Initialization</h3>
+                        <p class="text-gray-400 text-sm leading-relaxed">Access the core files. Watch the "Fast-Start" protocol. Identify your high-value niche within 4 hours.</p>
+                         <div class="mt-4 md:ml-auto md:mr-0 inline-block">
+                            <span class="text-[10px] font-mono text-blue-400 bg-blue-500/10 border border-blue-500/20 px-3 py-1 rounded">EST: 0-24 HOURS</span>
+                        </div>
+                    </div>
+                    
+                    <div class="absolute left-0 md:left-1/2 md:-translate-x-1/2 w-10 h-10 rounded-full bg-[#050507] border border-blue-500 flex items-center justify-center shadow-[0_0_20px_rgba(59,130,246,0.5)] z-20">
+                        <span class="font-mono text-sm font-bold text-blue-400">01</span>
+                    </div>
+    
+                    <div class="hidden md:block w-1/2"></div>
+                </div>
+    
+                <div class="relative z-10 mb-16 flex flex-col md:flex-row items-start md:items-center gap-8 group">
+                    <div class="hidden md:block w-1/2"></div>
+    
+                    <div class="absolute left-0 md:left-1/2 md:-translate-x-1/2 w-10 h-10 rounded-full bg-[#050507] border border-cyan-500 flex items-center justify-center shadow-[0_0_20px_rgba(6,182,212,0.5)] z-20">
+                        <span class="font-mono text-sm font-bold text-cyan-400">02</span>
+                    </div>
+    
+                    <div class="w-full md:w-1/2 md:text-left md:pl-12 pl-12 md:pl-0 pt-2">
+                        <h3 class="text-2xl font-bold text-white mb-2">Phase 2: Configuration</h3>
+                        <p class="text-gray-400 text-sm leading-relaxed">Connect OpenAI API. Import JSON agent files. Test the automated workflow. Your "digital staff" goes live.</p>
+                         <div class="mt-4 inline-block">
+                            <span class="text-[10px] font-mono text-cyan-400 bg-cyan-500/10 border border-cyan-500/20 px-3 py-1 rounded">EST: DAYS 2-3</span>
+                        </div>
+                    </div>
+                </div>
+    
+                <div class="relative z-10 flex flex-col md:flex-row items-start md:items-center gap-8 group">
+                     <div class="w-full md:w-1/2 md:text-right md:pr-12 pl-12 md:pl-0 pt-2">
+                        <h3 class="text-2xl font-bold text-white mb-2">Phase 3: Traffic Injection</h3>
+                        <p class="text-gray-400 text-sm leading-relaxed">Activate "Auto-Inbound" scripts. Leads start filling your calendar. The system generates cash flow.</p>
+                         <div class="mt-4 md:ml-auto md:mr-0 inline-block">
+                            <span class="text-[10px] font-mono text-emerald-400 bg-emerald-500/10 border border-emerald-500/20 px-3 py-1 rounded">EST: DAY 5+</span>
+                        </div>
+                    </div>
+                    
+                    <div class="absolute left-0 md:left-1/2 md:-translate-x-1/2 w-10 h-10 rounded-full bg-[#050507] border border-emerald-500 flex items-center justify-center shadow-[0_0_20px_rgba(16,185,129,0.5)] z-20">
+                        <span class="font-mono text-sm font-bold text-emerald-400">03</span>
+                    </div>
+    
+                     <div class="hidden md:block w-1/2"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-20 px-4 md:px-6">
+        <div class="max-w-4xl mx-auto">
+            <h2 class="text-center text-2xl md:text-3xl font-bold mb-12">System Benchmark</h2>
+            <div class="glass-panel rounded-xl overflow-hidden">
+                <div class="grid grid-cols-3 border-b border-white/10 bg-white/5 font-mono text-xs md:text-sm font-bold uppercase tracking-wider text-center py-4">
+                    <div class="col-span-1 text-gray-500">Feature</div>
+                    <div class="col-span-1 text-gray-500">Traditional Agency</div>
+                    <div class="col-span-1 text-primary">Accelerator_OS</div>
+                </div>
+                <div class="grid grid-cols-3 border-b border-white/5 text-center py-6 text-sm">
+                    <div class="col-span-1 font-bold text-gray-400">Setup Time</div>
+                    <div class="col-span-1 text-gray-500">3-6 Months</div>
+                    <div class="col-span-1 text-white font-bold">48 Hours</div>
+                </div>
+                <div class="grid grid-cols-3 border-b border-white/5 text-center py-6 text-sm">
+                    <div class="col-span-1 font-bold text-gray-400">Profit Margin</div>
+                    <div class="col-span-1 text-gray-500">15-20%</div>
+                    <div class="col-span-1 text-success font-bold">90-95%</div>
+                </div>
+                <div class="grid grid-cols-3 text-center py-6 text-sm">
+                    <div class="col-span-1 font-bold text-gray-400">Scalability</div>
+                    <div class="col-span-1 text-red-500">Linear (Hard)</div>
+                    <div class="col-span-1 text-primary font-bold">Exponential</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-20 px-4 md:px-6">
+        <div class="max-w-4xl mx-auto flex flex-col md:flex-row items-center gap-10">
+            <div class="w-full md:w-1/3 flex justify-center">
+                <div class="relative w-48 h-48 md:w-56 md:h-56 group">
+                    <div class="absolute inset-0 bg-primary/20 rounded-full blur-2xl animate-pulse"></div>
+                    
+                    <div class="relative w-full h-full rounded-full bg-[#0E1116] border border-white/10 flex items-center justify-center shadow-2xl">
+                        <svg class="w-24 h-24 text-gray-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+                        </svg>
+                    </div>
+    
+                    <div class="absolute bottom-4 right-8 bg-black/80 backdrop-blur border border-green-500/30 px-3 py-1 rounded text-[10px] font-mono text-green-400 flex items-center gap-2 shadow-lg">
+                        <span class="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse"></span>
+                        ONLINE
+                    </div>
+                </div>
+            </div>
+    
+            <div class="w-full md:w-2/3 text-center md:text-left">
+                <span class="text-primary font-mono text-xs tracking-wider uppercase">Lead Architect</span>
+                <h2 class="text-3xl font-bold text-white mt-2 mb-4">The Developer</h2>
+                <p class="text-gray-400 leading-relaxed mb-6 font-light">
+                    I am not a "Course Creator." I am a Systems Engineer turned Agency Owner. After scaling my first agency to $50k/mo, I realized the model was broken. I spent 12 months building <strong>Accelerator_OS</strong> to replace myself with code. Now, I license this system to others who want freedom, not just income.
+                </p>
+                
+                <div class="flex flex-wrap justify-center md:justify-start gap-4">
+                    <div class="bg-white/5 px-4 py-3 rounded border border-white/5 text-center min-w-[120px]">
+                        <div class="flex justify-center mb-1">
+                            <svg class="w-4 h-4 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path></svg>
+                        </div>
+                        <p class="text-[10px] text-gray-500 font-mono uppercase">Projects</p>
+                        <p class="font-bold text-white text-lg">450+</p>
+                    </div>
+                    <div class="bg-white/5 px-4 py-3 rounded border border-white/5 text-center min-w-[120px]">
+                         <div class="flex justify-center mb-1">
+                            <svg class="w-4 h-4 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                        </div>
+                        <p class="text-[10px] text-gray-500 font-mono uppercase">Student Rev</p>
+                        <p class="font-bold text-white text-lg">$14M+</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-20 px-4 md:px-6 bg-panel/30">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-center text-3xl font-bold mb-12">Verified User Logs</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="glass-panel p-6 rounded-xl border-l-4 border-success">
+                    <div class="flex items-center gap-4 mb-4">
+                        <div class="w-10 h-10 bg-gray-700 rounded-full"></div>
+                        <div><p class="font-bold text-sm">Alex K.</p><p class="text-xs text-success font-mono">STATUS: $12k/mo</p></div>
+                    </div>
+                    <p class="text-sm text-gray-400">"I tried running a design agency for 2 years. Switched to the AI model and passed my old revenue in month 1. The agents actually work."</p>
+                </div>
+                <div class="glass-panel p-6 rounded-xl border-l-4 border-success">
+                    <div class="flex items-center gap-4 mb-4">
+                        <div class="w-10 h-10 bg-gray-700 rounded-full"></div>
+                        <div><p class="font-bold text-sm">Sarah V.</p><p class="text-xs text-success font-mono">STATUS: $8.5k/mo</p></div>
+                    </div>
+                    <p class="text-sm text-gray-400">"Zero code background. The Niche Radar helped me find a sector in real estate that nobody was touching. Setup took me a weekend."</p>
+                </div>
+                <div class="glass-panel p-6 rounded-xl border-l-4 border-success">
+                    <div class="flex items-center gap-4 mb-4">
+                        <div class="w-10 h-10 bg-gray-700 rounded-full"></div>
+                        <div><p class="font-bold text-sm">David M.</p><p class="text-xs text-success font-mono">STATUS: $22k/mo</p></div>
+                    </div>
+                    <p class="text-sm text-gray-400">"The scale module is frighteningly good. I have automated emails booking calls for me while I sleep. This is the future."</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-12 px-4 md:px-6">
+        <div class="max-w-3xl mx-auto glass-panel p-8 rounded-xl border border-white/10">
+            <h3 class="font-mono text-sm text-gray-500 uppercase mb-6 flex items-center gap-2">
+                Minimum System Requirements
+            </h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div>
+                    <h4 class="font-bold text-white mb-4">Hardware / Tools</h4>
+                    <ul class="space-y-3 text-sm text-gray-400">
+                        <li class="flex items-center gap-2"><span class="text-green-500">✓</span> Laptop or Smartphone</li>
+                        <li class="flex items-center gap-2"><span class="text-green-500">✓</span> OpenAI Account ($20/mo)</li>
+                        <li class="flex items-center gap-2"><span class="text-green-500">✓</span> Stripe/PayPal Account</li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold text-white mb-4">Operator Profile</h4>
+                    <ul class="space-y-3 text-sm text-gray-400">
+                        <li class="flex items-center gap-2"><span class="text-green-500">✓</span> 3-5 Hours Per Week Available</li>
+                        <li class="flex items-center gap-2"><span class="text-green-500">✓</span> No prior coding knowledge needed</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="deploy" class="py-20 md:py-32 px-4 md:px-6 relative">
+        <div class="max-w-4xl mx-auto relative z-10">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold mb-4">Download Contents</h2>
+                <p class="text-gray-400">Full System Access • Lifetime License</p>
+            </div>
+            <div class="space-y-4">
+                <div class="glass-panel p-6 rounded-lg flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+                    <div class="flex items-center gap-4">
+                        <div class="w-8 h-8 rounded bg-primary/20 text-primary flex items-center justify-center font-bold">01</div>
+                        <div><h3 class="font-bold">The Niche Radar Protocol</h3><p class="text-xs text-gray-400">Market Identification Algorithms</p></div>
+                    </div>
+                    <span class="font-mono text-xs text-gray-500 border border-white/10 px-2 py-1 rounded">VAL: $997</span>
+                </div>
+                <div class="glass-panel p-6 rounded-lg flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+                    <div class="flex items-center gap-4">
+                        <div class="w-8 h-8 rounded bg-primary/20 text-primary flex items-center justify-center font-bold">02</div>
+                        <div><h3 class="font-bold">AI Fulfillment Library (JSON)</h3><p class="text-xs text-gray-400">Copy/Paste Agent Files</p></div>
+                    </div>
+                    <span class="font-mono text-xs text-gray-500 border border-white/10 px-2 py-1 rounded">VAL: $1,997</span>
+                </div>
+                <div class="glass-panel p-6 rounded-lg flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+                    <div class="flex items-center gap-4">
+                        <div class="w-8 h-8 rounded bg-primary/20 text-primary flex items-center justify-center font-bold">03</div>
+                        <div><h3 class="font-bold">Automated Client Acquisition</h3><p class="text-xs text-gray-400">Cold Email & LinkedIn Scripts</p></div>
+                    </div>
+                    <span class="font-mono text-xs text-gray-500 border border-white/10 px-2 py-1 rounded">VAL: $1,497</span>
+                </div>
+            </div>
+
+            <div class="mt-16 max-w-lg mx-auto relative z-20">
+                <div class="absolute -inset-1 bg-gradient-to-r from-primary to-accent rounded-2xl blur opacity-20 animate-pulse"></div>
+                <div class="glass-panel rounded-2xl p-8 md:p-10 relative border-t border-white/10 shadow-2xl">
+                    <div class="text-center mb-8">
+                        <div class="inline-flex items-center gap-2 px-3 py-1 rounded bg-primary/10 border border-primary/20 text-primary text-[10px] font-mono mb-4">
+                            <span class="w-1.5 h-1.5 rounded-full bg-primary animate-pulse"></span>
+                            SECURE_GATEWAY_V2
+                        </div>
+                        <h3 class="text-2xl font-bold text-white mb-2">Initialize Deployment</h3>
+                        <p class="text-sm text-gray-400">Enter your credentials to generate your license key.</p>
+                    </div>
+                    <form onsubmit="event.preventDefault(); handleFormSubmit();" class="space-y-5">
+                        <div class="space-y-1.5">
+                            <label class="text-[10px] font-mono text-gray-500 uppercase tracking-widest ml-1">Operator Name</label>
+                            <input type="text" required placeholder="John Doe" class="w-full bg-panel/50 border border-white/10 rounded-lg py-3 px-4 text-sm text-white focus:outline-none focus:border-primary/50 transition-all">
+                        </div>
+                        <div class="space-y-1.5">
+                            <label class="text-[10px] font-mono text-gray-500 uppercase tracking-widest ml-1">Email Address</label>
+                            <input type="email" required placeholder="operator@domain.com" class="w-full bg-panel/50 border border-white/10 rounded-lg py-3 px-4 text-sm text-white focus:outline-none focus:border-primary/50 transition-all">
+                        </div>
+                        <div class="space-y-1.5">
+                            <label class="text-[10px] font-mono text-gray-500 uppercase tracking-widest ml-1">Current Revenue</label>
+                            <div class="relative">
+                                <select class="w-full bg-panel/50 border border-white/10 rounded-lg py-3 px-4 text-sm text-gray-300 focus:outline-none focus:border-primary/50 appearance-none">
+                                    <option>$0 - I'm starting from scratch</option>
+                                    <option>$1k - $5k / month</option>
+                                    <option>$5k - $10k / month</option>
+                                    <option>$10k+ / month</option>
+                                </select>
+                            </div>
+                        </div>
+                        <button type="submit" class="w-full group relative overflow-hidden bg-white hover:bg-gray-200 text-black font-bold py-4 rounded-lg transition-all shadow-[0_0_20px_rgba(255,255,255,0.2)] mt-2">
+                            <span class="relative z-10 flex items-center justify-center gap-2">GET INSTANT ACCESS</span>
+                        </button>
+                        <div class="flex items-center justify-center gap-4 text-[10px] text-gray-600 font-mono pt-2">
+                            <span>256-BIT ENCRYPTION</span><span class="w-px h-3 bg-white/10"></span><span>NO SPAM PROTOCOL</span>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            
+            <div class="mt-12 text-center max-w-2xl mx-auto">
+                <div class="flex items-center justify-center gap-2 mb-2 text-white font-bold">
+                    <svg class="w-5 h-5 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>
+                    Risk Protocol: Active
+                </div>
+                <p class="text-sm text-gray-500">Deploy the system for 60 days. If you do not generate profit, simply request a refund.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-20 px-4 md:px-6 bg-panel/30 border-t border-white/5">
+        <div class="max-w-3xl mx-auto">
+            <h2 class="text-2xl font-bold mb-8 text-center">System Diagnostics (FAQ)</h2>
+            <div class="space-y-4">
+                <details class="glass-panel rounded-lg group">
+                    <summary class="p-6 cursor-pointer font-bold flex justify-between items-center select-none">Do I need to know how to code?<span class="text-primary group-open:rotate-180 transition transform">▼</span></summary>
+                    <div class="px-6 pb-6 text-sm text-gray-400 leading-relaxed">No. The entire premise of this system is "No-Code."</div>
+                </details>
+                <details class="glass-panel rounded-lg group">
+                    <summary class="p-6 cursor-pointer font-bold flex justify-between items-center select-none">How much time does this take?<span class="text-primary group-open:rotate-180 transition transform">▼</span></summary>
+                    <div class="px-6 pb-6 text-sm text-gray-400 leading-relaxed">Initial setup is ~4-5 hours. Ongoing management is 30-60 mins/day.</div>
+                </details>
+            </div>
+        </div>
+    </section>
+
+    <footer class="border-t border-white/5 py-12 text-center text-xs text-gray-600 font-mono">
+        <span class="text-xl font-heading font-bold text-white tracking-wider mb-4 block">CLICKBOOST</span>
+        <p class="mb-4">&copy; 2024 Accelerator_OS. All systems operational.</p>
+        <div class="flex justify-center gap-6">
+            <a href="#" class="hover:text-gray-400">Terms</a>
+            <a href="#" class="hover:text-gray-400">Privacy</a>
+        </div>
+    </footer>
+
+    <div class="fixed bottom-0 left-0 w-full bg-void/90 backdrop-blur-lg border-t border-white/10 p-4 md:hidden z-40">
+        <div class="flex items-center justify-between gap-4">
+            <div><p class="text-xs text-gray-400">License Cost</p><p class="text-xl font-bold text-white">$497</p></div>
+            <button onclick="document.getElementById('deploy').scrollIntoView({behavior: 'smooth'})" class="bg-white text-black font-bold px-6 py-3 rounded-lg flex-1 shadow-lg">Start Now</button>
+        </div>
+    </div>
+
+    <div id="wait-modal" class="fixed inset-0 bg-void/95 z-[100] hidden flex items-center justify-center p-4 backdrop-blur-xl transition-opacity">
+        <div class="glass-panel border border-primary/30 rounded-xl max-w-sm w-full p-8 text-center relative overflow-hidden">
+            <div class="absolute top-0 left-0 w-full h-1 bg-primary shadow-[0_0_15px_#6366f1] animate-[scan_2s_ease-in-out_infinite]"></div>
+            <div class="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-6 text-primary animate-pulse">
+                 <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.384-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"></path></svg>
+            </div>
+            <h3 class="text-xl font-bold text-white mb-2">Initializing...</h3>
+            <p class="text-gray-400 mb-8 text-sm">Allocating secure server slot.</p>
+            <div class="bg-black/50 p-3 rounded mb-6 border border-white/10 text-left font-mono text-xs text-green-400 space-y-1">
+                <p>> System_Check: Passed</p>
+                <p>> Seats_Available: 3</p>
+                <p id="redirect-timer">> Redirecting in 5s...</p>
+            </div>
+            <button onclick="window.location.href='https://wa.me/1234567890?text=I+am+ready+to+deploy'" class="w-full bg-primary hover:bg-indigo-500 text-white font-bold py-3 rounded transition shadow-glow">Click to Deploy</button>
+        </div>
+    </div>
+
+    <script>
+        function handleFormSubmit() {
+            const btn = document.querySelector('button[type="submit"]');
+            const originalContent = btn.innerHTML;
+            btn.innerHTML = '<span class="animate-pulse">PROCESSING...</span>';
+            btn.disabled = true;
+            setTimeout(() => {
+                document.getElementById('wait-modal').classList.remove('hidden');
+                btn.innerHTML = originalContent;
+                btn.disabled = false;
+                let countdown = 5;
+                const timerDisplay = document.getElementById('redirect-timer');
+                const interval = setInterval(() => {
+                    countdown--;
+                    timerDisplay.innerText = `> Redirecting in ${countdown}s...`;
+                    if(countdown <= 0) {
+                        clearInterval(interval);
+                        window.location.href = "https://wa.me/1234567890?text=I+have+initialized+my+application"; 
+                    }
+                }, 1000);
+            }, 800);
+        }
+    </script>
+</body>
+</html>

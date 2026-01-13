@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Commande Confirmée - Mitsuki</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;400;600;800&family=Oswald:wght@300;500;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        body { font-family: 'Manrope', sans-serif; background-color: #0c0c0c; color: #e5e5e5; }
+        h1, h2, .heading-font { font-family: 'Oswald', sans-serif; letter-spacing: 0.05em; text-transform: uppercase; }
+        
+        /* Checkmark Animation */
+        .circle-loader {
+            border: 2px solid rgba(0, 0, 0, 0.2);
+            border-left-color: #16a34a; /* Green-600 */
+            animation: loader-spin 1.2s infinite linear;
+            position: relative;
+            display: inline-block;
+            vertical-align: top;
+            border-radius: 50%;
+            width: 7em;
+            height: 7em;
+        }
+        .load-complete {
+            -webkit-animation: none;
+            animation: none;
+            border-color: #16a34a;
+            transition: border 500ms ease-out;
+        }
+        .checkmark {
+            display: none;
+        }
+        .checkmark.draw:after {
+            animation-duration: 800ms;
+            animation-timing-function: ease;
+            animation-name: checkmark;
+            transform: scaleX(-1) rotate(135deg);
+        }
+        .checkmark:after {
+            opacity: 1;
+            height: 3.5em;
+            width: 1.75em;
+            transform-origin: left top;
+            border-right: 3px solid #16a34a;
+            border-top: 3px solid #16a34a;
+            content: '';
+            left: 1.75em;
+            top: 3.5em;
+            position: absolute;
+        }
+        @keyframes loader-spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        @keyframes checkmark {
+            0% { height: 0; width: 0; opacity: 1; }
+            20% { height: 0; width: 1.75em; opacity: 1; }
+            40% { height: 3.5em; width: 1.75em; opacity: 1; }
+            100% { height: 3.5em; width: 1.75em; opacity: 1; }
+        }
+    </style>
+</head>
+<body class="flex items-center justify-center min-h-screen relative overflow-hidden">
+
+    <section class="py-20 bg-[#0a0a0a] border-b border-white/5 relative">
+        <div class="max-w-5xl mx-auto px-6 text-center">
+            
+            <h2 class="text-3xl md:text-5xl heading-font text-white mb-8 leading-tight">
+                CE SOIR, VOUS AVEZ <br>
+                <span class="text-transparent bg-clip-text bg-gradient-to-r from-red-500 to-amber-600">DEUX CHOIX.</span>
+            </h2>
+
+            <p class="text-gray-400 text-lg md:text-xl font-light mb-12 max-w-3xl mx-auto">
+                Vous pouvez commander "comme d'habitude" et manger un repas oubliable... <br>
+                <strong class="text-white">OU</strong> vous pouvez transformer votre soirée en un événement gastronomique.
+            </p>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12 text-left md:text-center">
+                
+                <div class="bg-[#121212] p-6 border border-white/5 rounded-sm hover:border-red-900/50 transition duration-300 group">
+                    <div class="w-14 h-14 bg-red-900/10 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:bg-red-600 transition duration-300">
+                        <i data-lucide="fish" class="text-red-500 w-7 h-7 group-hover:text-white transition"></i>
+                    </div>
+                    <h3 class="text-white font-bold uppercase tracking-widest mb-3 text-sm">Zéro Congélation</h3>
+                    <p class="text-gray-500 text-sm leading-relaxed">
+                        Nos saumons sont découpés à la minute. Vous ne goûtez pas le froid, vous goûtez la texture fondante du poisson frais.
+                    </p>
+                </div>
+
+                <div class="bg-[#121212] p-6 border border-white/5 rounded-sm hover:border-amber-900/50 transition duration-300 group">
+                    <div class="w-14 h-14 bg-amber-900/10 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:bg-amber-600 transition duration-300">
+                        <i data-lucide="gem" class="text-amber-500 w-7 h-7 group-hover:text-white transition"></i>
+                    </div>
+                    <h3 class="text-white font-bold uppercase tracking-widest mb-3 text-sm">L'Effet "Wow"</h3>
+                    <p class="text-gray-500 text-sm leading-relaxed">
+                        Quand vous posez la Box Diamond sur la table, l'ambiance change. C'est visuel, c'est lourd, c'est impressionnant.
+                    </p>
+                </div>
+
+                <div class="bg-[#121212] p-6 border border-white/5 rounded-sm hover:border-green-900/50 transition duration-300 group">
+                    <div class="w-14 h-14 bg-green-900/10 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:bg-green-600 transition duration-300">
+                        <i data-lucide="shield-check" class="text-green-500 w-7 h-7 group-hover:text-white transition"></i>
+                    </div>
+                    <h3 class="text-white font-bold uppercase tracking-widest mb-3 text-sm">Risque Zéro</h3>
+                    <p class="text-gray-500 text-sm leading-relaxed">
+                        Une erreur ? Un retard ? Nous ne discutons pas. Nous remplaçons ou remboursons. Votre satisfaction est notre seule pub.
+                    </p>
+                </div>
+
+            </div>
+
+            <div class="inline-block animate-bounce">
+                <p class="text-red-600 text-xs font-bold uppercase tracking-[0.2em] mb-2">Convaincu ?</p>
+                <i data-lucide="arrow-down" class="text-white w-6 h-6 mx-auto opacity-50"></i>
+            </div>
+
+        </div>
+    </section>
+</body>
+</html>

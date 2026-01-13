@@ -1,0 +1,875 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EMP™ | Total Biological Reset</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@300;400;600;700;900&display=swap"
+        rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Inter"', 'sans-serif'],
+                        display: ['"Anton"', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            orange: '#FF7A00',
+                            dark: '#0B1120',
+                            light: '#FFF5EB',
+                            surface: '#1E293B'
+                        }
+                    },
+                    backgroundImage: {
+                        'hero-pattern': "linear-gradient(to bottom, rgba(0,0,0,0.8), rgba(11,17,32,1)), url('https://images.unsplash.com/photo-1552662977-eb44919c5305?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80')",
+                    },
+                    animation: {
+                        'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'float': 'float 6s ease-in-out infinite',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-10px)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* CORE SHAPES */
+        .clip-slant-bottom {
+            clip-path: polygon(0 0, 100% 0, 100% 95%, 0 100%);
+        }
+
+        .clip-slant-top {
+            clip-path: polygon(0 5%, 100% 0, 100% 100%, 0 100%);
+        }
+
+        .clip-chevron {
+            clip-path: polygon(100% 0, 100% 85%, 50% 100%, 0 85%, 0 0);
+        }
+
+        /* FORM INPUTS */
+        .input-field {
+            background-color: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: white;
+            transition: all 0.3s ease;
+        }
+
+        .input-field:focus {
+            outline: none;
+            border-color: #FF7A00;
+            background-color: rgba(255, 255, 255, 0.1);
+            box-shadow: 0 0 15px rgba(255, 122, 0, 0.2);
+            transform: translateY(-2px);
+        }
+
+        /* SCROLL REVEAL ANIMATION (JS TRIGGERED) */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* BUTTON SHIMMER EFFECT */
+        .btn-shimmer {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-shimmer::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+            transition: 0.5s;
+        }
+
+        .btn-shimmer:hover::after {
+            left: 100%;
+            transition: 0.5s;
+        }
+
+        /* CARD HOVER EFFECTS */
+        .hover-card {
+            transition: all 0.3s ease;
+        }
+
+        .hover-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+            border-color: #FF7A00;
+        }
+
+        /* NEON GLOW TEXT */
+        .text-glow {
+            text-shadow: 0 0 10px rgba(255, 122, 0, 0.5);
+        }
+
+        /* CUSTOM SCROLLBAR */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #0B1120;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #FF7A00;
+            border-radius: 5px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #ff9100;
+        }
+    </style>
+</head>
+
+<body class="bg-gray-50 text-slate-900 antialiased font-sans pb-20 md:pb-0 overflow-x-hidden">
+
+    <header class="relative bg-brand-dark text-white pt-10 pb-24 overflow-hidden">
+        <div class="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-red-600 to-brand-orange"></div>
+
+        <div class="absolute inset-0 opacity-20 pointer-events-none"
+            style="background-image: radial-gradient(#334155 1px, transparent 1px); background-size: 30px 30px;"></div>
+
+        <div class="max-w-5xl mx-auto px-4 text-center relative z-10 reveal active">
+            <div class="flex items-center justify-center gap-2 mb-4 animate-pulse-slow text-brand-orange">
+                <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+                </svg>
+                <p class="font-bold tracking-widest uppercase text-sm md:text-base">Warning: For High-Performance
+                    Executives Only</p>
+            </div>
+
+            <h1 class="font-display text-5xl md:text-8xl uppercase tracking-wide leading-none mb-6 drop-shadow-lg">
+                RECLAIM YOUR <br>
+                <span class="text-transparent bg-clip-text bg-gradient-to-b from-white to-gray-400">BIOLOGICAL
+                    PRIME</span>
+            </h1>
+
+            <p class="text-xl text-gray-300 max-w-3xl mx-auto mb-10 font-light reveal delay-100">
+                The <span class="text-brand-orange font-bold text-glow">90-Day Metabolic Protocol</span> to burn
+                visceral fat, double cognitive output, and reverse biological age.
+            </p>
+
+            <div
+                class="relative w-full max-w-4xl mx-auto aspect-video bg-black rounded-xl border-4 border-gray-800 shadow-[0_0_50px_rgba(255,122,0,0.1)] flex items-center justify-center group cursor-pointer overflow-hidden transform hover:scale-[1.01] transition duration-500 reveal delay-200">
+                <div class="absolute inset-0 bg-brand-orange/10 animate-pulse"></div>
+                <div
+                    class="w-24 h-24 bg-brand-orange rounded-full flex items-center justify-center shadow-[0_0_30px_rgba(255,122,0,0.6)] group-hover:scale-110 transition duration-300 z-20 relative">
+                    <span
+                        class="absolute inline-flex h-full w-full rounded-full bg-brand-orange opacity-75 animate-ping"></span>
+                    <svg class="w-10 h-10 text-white ml-2 relative z-10" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M8 5v14l11-7z" />
+                    </svg>
+                </div>
+                <div class="absolute inset-0 bg-gray-900 opacity-50 group-hover:opacity-30 transition"></div>
+                <p class="absolute bottom-6 text-white font-bold tracking-widest uppercase text-sm z-20">Watch The
+                    Private Briefing</p>
+            </div>
+
+            <div class="mt-12 reveal delay-300">
+                <a href="#apply"
+                    class="btn-shimmer inline-block bg-gradient-to-r from-brand-orange to-red-500 text-white font-black text-2xl px-12 py-6 rounded shadow-[0_10px_0_rgb(150,50,0)] hover:shadow-[0_15px_20px_rgba(255,122,0,0.4)] hover:-translate-y-1 transition transform uppercase tracking-tighter">
+                    Yes! I Want Access Now &rarr;
+                </a>
+                <p class="mt-4 text-xs text-gray-500 uppercase">Limited Spots Available for January</p>
+            </div>
+        </div>
+    </header>
+
+    <section class="bg-brand-surface py-16 border-t border-b border-gray-800">
+        <div class="max-w-5xl mx-auto px-4 reveal">
+            <h2 class="text-center text-white font-display text-3xl md:text-4xl uppercase tracking-wider mb-12">Who We
+                Accept</h2>
+
+            <div class="grid md:grid-cols-2 gap-8">
+                <div
+                    class="bg-brand-dark p-8 rounded-lg border border-red-900/30 opacity-60 hover:opacity-100 hover:border-red-600/50 transition duration-500">
+                    <h3
+                        class="text-red-500 font-display text-2xl uppercase tracking-widest mb-6 flex items-center gap-2">
+                        <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M6 18L18 6M6 6l12 12" />
+                        </svg>
+                        Who This Is NOT For
+                    </h3>
+                    <ul class="space-y-4 text-slate-400 text-sm">
+                        <li class="flex gap-3"><svg class="w-5 h-5 text-red-500 flex-shrink-0" fill="none"
+                                viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M6 18L18 6M6 6l12 12" />
+                            </svg> Fitness hobbyists looking for "workout buddies."</li>
+                        <li class="flex gap-3"><svg class="w-5 h-5 text-red-500 flex-shrink-0" fill="none"
+                                viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M6 18L18 6M6 6l12 12" />
+                            </svg> People unwilling to do full bloodwork panels.</li>
+                        <li class="flex gap-3"><svg class="w-5 h-5 text-red-500 flex-shrink-0" fill="none"
+                                viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M6 18L18 6M6 6l12 12" />
+                            </svg> "Budget shoppers" comparing us to $50 apps.</li>
+                    </ul>
+                </div>
+
+                <div
+                    class="bg-brand-dark p-8 rounded-lg border-2 border-brand-orange relative shadow-[0_0_30px_rgba(255,122,0,0.1)] hover:shadow-[0_0_50px_rgba(255,122,0,0.3)] transition duration-500">
+                    <div
+                        class="absolute -top-3 left-8 bg-brand-orange text-white text-xs font-bold px-3 py-1 uppercase">
+                        Perfect Fit</div>
+                    <h3 class="text-white font-display text-2xl uppercase tracking-widest mb-6 flex items-center gap-2">
+                        <svg class="w-6 h-6 text-brand-orange" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                        </svg>
+                        Who This IS For
+                    </h3>
+                    <ul class="space-y-4 text-white text-sm font-medium">
+                        <li class="flex gap-3"><svg class="w-5 h-5 text-brand-orange flex-shrink-0" fill="none"
+                                viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M5 13l4 4L19 7" />
+                            </svg> Founders & C-Suite Execs with high cognitive load.</li>
+                        <li class="flex gap-3"><svg class="w-5 h-5 text-brand-orange flex-shrink-0" fill="none"
+                                viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M5 13l4 4L19 7" />
+                            </svg> Leaders who view health as a strategic ROI asset.</li>
+                        <li class="flex gap-3"><svg class="w-5 h-5 text-brand-orange flex-shrink-0" fill="none"
+                                viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M5 13l4 4L19 7" />
+                            </svg> Decisive action-takers ready to invest in results.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-20 bg-white relative">
+        <div class="max-w-6xl mx-auto px-4 grid md:grid-cols-2 gap-12 items-center reveal">
+            <div>
+                <span
+                    class="bg-brand-orange/10 text-brand-orange px-3 py-1 rounded font-bold text-xs uppercase tracking-widest">The
+                    Mechanism</span>
+                <h2 class="font-display text-5xl text-slate-900 mt-4 mb-6 uppercase">Data-Driven <br><span
+                        class="text-brand-orange">Optimization</span></h2>
+                <p class="text-lg text-slate-600 mb-6">
+                    Stop guessing with generic trainers. We use clinical blood data to engineer your nutrition and
+                    recovery.
+                </p>
+                <ul class="space-y-4">
+                    <li class="flex items-center gap-3 hover:translate-x-2 transition duration-300">
+                        <div
+                            class="w-8 h-8 rounded bg-brand-orange flex items-center justify-center text-white font-bold">
+                            1</div>
+                        <span class="font-bold text-slate-800">45-Biomarker Blood Analysis</span>
+                    </li>
+                    <li class="flex items-center gap-3 hover:translate-x-2 transition duration-300 delay-75">
+                        <div
+                            class="w-8 h-8 rounded bg-brand-orange flex items-center justify-center text-white font-bold">
+                            2</div>
+                        <span class="font-bold text-slate-800">Custom Pharmaceutical Stack</span>
+                    </li>
+                    <li class="flex items-center gap-3 hover:translate-x-2 transition duration-300 delay-150">
+                        <div
+                            class="w-8 h-8 rounded bg-brand-orange flex items-center justify-center text-white font-bold">
+                            3</div>
+                        <span class="font-bold text-slate-800">Executive Sleep Architecture</span>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="relative animate-float">
+                <div
+                    class="absolute top-0 right-0 w-64 h-80 bg-slate-900 rounded-lg transform rotate-6 shadow-2xl z-0 border border-gray-700">
+                </div>
+                <div
+                    class="relative z-10 w-full max-w-md bg-white rounded-xl shadow-[0_20px_50px_rgba(0,0,0,0.2)] border border-slate-100 p-2 transform -rotate-2 hover:rotate-0 transition duration-500">
+                    <div
+                        class="bg-slate-100 h-64 rounded flex items-center justify-center overflow-hidden relative group">
+                        <div class="text-center group-hover:scale-105 transition duration-500">
+                            <h3 class="font-display text-4xl text-slate-900 uppercase">EMP<span
+                                    class="text-brand-orange">™</span></h3>
+                            <p class="text-xs font-bold text-slate-400 tracking-widest mt-2">DASHBOARD 2.0</p>
+                        </div>
+                        <div
+                            class="absolute top-4 right-4 bg-red-500 text-white text-xs font-bold px-2 py-1 rounded shadow animate-pulse">
+                            Live Data</div>
+                    </div>
+                    <div class="p-4 flex justify-between items-center">
+                        <div class="h-2 w-24 bg-slate-200 rounded"></div>
+                        <div class="h-8 w-24 bg-brand-orange rounded"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="bg-brand-dark py-20 border-t border-gray-800">
+        <div class="max-w-5xl mx-auto px-4 grid md:grid-cols-2 gap-12 items-center reveal">
+            <div class="relative group">
+                <div
+                    class="w-full aspect-[4/5] bg-gray-800 rounded-lg overflow-hidden relative border border-gray-700 shadow-2xl">
+                    <div class="absolute bottom-0 left-0 w-full h-2/3 bg-gradient-to-t from-black to-transparent z-10">
+                    </div>
+                    <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
+                        alt="Founder"
+                        class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition duration-700 scale-100 group-hover:scale-105">
+                    <div class="absolute bottom-6 left-6 z-20">
+                        <p class="text-white font-display text-3xl uppercase">Dr. James K.</p>
+                        <p class="text-brand-orange text-xs font-bold uppercase tracking-widest">Lead Physiologist &
+                            Founder</p>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <h2 class="font-display text-4xl text-white uppercase mb-6">"I Built This For The <span
+                        class="text-brand-orange">0.1%</span>."</h2>
+                <div class="w-20 h-1 bg-brand-orange mb-8"></div>
+                <p class="text-slate-400 leading-relaxed mb-6">
+                    "I spent 15 years working with Olympic athletes. The problem? They have all day to train. Executives
+                    don't."
+                </p>
+                <p class="text-slate-400 leading-relaxed mb-8">
+                    I reverse-engineered the protocols used by elite sport into a <strong>Time-Compressed Model</strong>
+                    specifically for founders. We strip away the fluff. We focus on minimum effective dose for maximum
+                    hormonal output.
+                </p>
+                <div class="flex gap-4">
+                    <div
+                        class="px-4 py-2 border border-gray-700 rounded text-xs text-gray-500 uppercase hover:border-brand-orange hover:text-white transition cursor-default">
+                        Ex-Olympic Coach</div>
+                    <div
+                        class="px-4 py-2 border border-gray-700 rounded text-xs text-gray-500 uppercase hover:border-brand-orange hover:text-white transition cursor-default">
+                        PhD Physiology</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="bg-brand-orange py-16 clip-slant-top clip-slant-bottom relative z-20">
+        <div class="max-w-4xl mx-auto px-4 text-center text-white reveal">
+            <h2 class="font-display text-4xl md:text-6xl uppercase mb-6 drop-shadow-md">
+                "I Built a $50M Company, but I almost lost my life."
+            </h2>
+            <div class="flex items-center justify-center gap-6">
+                <div class="w-20 h-20 bg-white rounded-full border-4 border-slate-900 overflow-hidden shadow-lg">
+                    <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="CEO"
+                        class="w-full h-full object-cover">
+                </div>
+                <div class="text-left">
+                    <p class="font-bold text-xl italic">"EMP Saved Me."</p>
+                    <p class="text-white/80 text-sm font-bold uppercase tracking-wide">David M. — Founder, TechFlow</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-24 bg-gray-50">
+        <div class="max-w-6xl mx-auto px-4 reveal">
+            <div class="text-center mb-16">
+                <span
+                    class="bg-brand-dark text-white px-3 py-1 rounded font-bold text-xs uppercase tracking-widest">Evidence</span>
+                <h2 class="font-display text-5xl text-slate-900 mt-4 uppercase">The <span
+                        class="text-brand-orange">Output</span></h2>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-white p-4 rounded-xl shadow-lg border border-gray-200 hover-card">
+                    <div class="bg-gray-200 aspect-[4/3] rounded mb-6 relative overflow-hidden group">
+                        <div class="absolute inset-0 flex">
+                            <div
+                                class="w-1/2 bg-gray-300 flex items-center justify-center text-gray-500 font-bold text-xs uppercase">
+                                Day 1</div>
+                            <div
+                                class="w-1/2 bg-brand-orange/80 flex items-center justify-center text-white font-bold text-xs uppercase">
+                                Day 90</div>
+                        </div>
+                        <div
+                            class="absolute inset-0 flex items-center justify-center group-hover:scale-110 transition duration-500">
+                            <p class="bg-black/50 text-white px-3 py-1 rounded text-xs font-bold backdrop-blur">-24 lbs
+                                Fat</p>
+                        </div>
+                    </div>
+                    <h3 class="font-bold text-slate-900 text-lg uppercase">Mark T. (44)</h3>
+                    <p class="text-xs text-brand-orange font-bold uppercase mb-2">Hedge Fund Manager</p>
+                    <p class="text-sm text-slate-600">"My brain fog is gone. I'm closing deals I would have missed 6
+                        months ago."</p>
+                </div>
+
+                <div class="bg-white p-4 rounded-xl shadow-lg border border-gray-200 hover-card">
+                    <div class="bg-gray-200 aspect-[4/3] rounded mb-6 relative overflow-hidden group">
+                        <div class="absolute inset-0 flex">
+                            <div
+                                class="w-1/2 bg-gray-300 flex items-center justify-center text-gray-500 font-bold text-xs uppercase">
+                                Day 1</div>
+                            <div
+                                class="w-1/2 bg-brand-orange/80 flex items-center justify-center text-white font-bold text-xs uppercase">
+                                Day 90</div>
+                        </div>
+                        <div
+                            class="absolute inset-0 flex items-center justify-center group-hover:scale-110 transition duration-500">
+                            <p class="bg-black/50 text-white px-3 py-1 rounded text-xs font-bold backdrop-blur">
+                                Testosterone +200%</p>
+                        </div>
+                    </div>
+                    <h3 class="font-bold text-slate-900 text-lg uppercase">Sarah L. (39)</h3>
+                    <p class="text-xs text-brand-orange font-bold uppercase mb-2">SaaS Founder</p>
+                    <p class="text-sm text-slate-600">"I thought burnout was normal. It wasn't. It was biological. Fixed
+                        in 8 weeks."</p>
+                </div>
+
+                <div class="bg-white p-4 rounded-xl shadow-lg border border-gray-200 hover-card">
+                    <div class="bg-gray-200 aspect-[4/3] rounded mb-6 relative overflow-hidden group">
+                        <div class="absolute inset-0 flex">
+                            <div
+                                class="w-1/2 bg-gray-300 flex items-center justify-center text-gray-500 font-bold text-xs uppercase">
+                                Day 1</div>
+                            <div
+                                class="w-1/2 bg-brand-orange/80 flex items-center justify-center text-white font-bold text-xs uppercase">
+                                Day 90</div>
+                        </div>
+                        <div
+                            class="absolute inset-0 flex items-center justify-center group-hover:scale-110 transition duration-500">
+                            <p class="bg-black/50 text-white px-3 py-1 rounded text-xs font-bold backdrop-blur">Resting
+                                HR -15</p>
+                        </div>
+                    </div>
+                    <h3 class="font-bold text-slate-900 text-lg uppercase">David R. (52)</h3>
+                    <p class="text-xs text-brand-orange font-bold uppercase mb-2">Real Estate Developer</p>
+                    <p class="text-sm text-slate-600">"My energy is back to where it was in my 20s. My wife noticed
+                        immediately."</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="bg-white py-24 border-t border-gray-100">
+        <div class="max-w-4xl mx-auto px-4 text-center reveal">
+            <h2 class="font-display text-4xl text-slate-900 uppercase mb-12">The Cost of <span
+                    class="text-red-600">Inaction</span></h2>
+
+            <div class="grid md:grid-cols-3 gap-6 text-left">
+                <div
+                    class="bg-gray-50 p-6 rounded shadow-sm border-t-4 border-slate-300 hover:border-red-500 transition duration-300 group hover:-translate-y-1">
+                    <div class="text-red-500 mb-3 group-hover:scale-110 transition">
+                        <svg class="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M13 10V3L4 14h7v7l9-11h-7z" />
+                        </svg>
+                    </div>
+                    <p class="text-xs text-slate-400 uppercase font-bold mb-2">Cognitive</p>
+                    <h3 class="text-2xl font-bold text-slate-900 mb-2">Brain Fog</h3>
+                    <p class="text-sm text-slate-600">One bad decision made at 3 PM because of low energy can cost
+                        millions. Is that a risk you can afford?</p>
+                </div>
+                <div
+                    class="bg-gray-50 p-6 rounded shadow-sm border-t-4 border-slate-300 hover:border-red-500 transition duration-300 group hover:-translate-y-1">
+                    <div class="text-red-500 mb-3 group-hover:scale-110 transition">
+                        <svg class="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                    </div>
+                    <p class="text-xs text-slate-400 uppercase font-bold mb-2">Biological</p>
+                    <h3 class="text-2xl font-bold text-slate-900 mb-2">Rapid Aging</h3>
+                    <p class="text-sm text-slate-600">High cortisol eats muscle and stores visceral fat. You are
+                        literally aging 2x faster than your peers.</p>
+                </div>
+                <div
+                    class="bg-gray-50 p-6 rounded shadow-sm border-t-4 border-slate-300 hover:border-brand-orange transition duration-300 group hover:-translate-y-1">
+                    <div class="text-brand-orange mb-3 group-hover:scale-110 transition">
+                        <svg class="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                    </div>
+                    <p class="text-xs text-brand-orange uppercase font-bold mb-2">The Solution</p>
+                    <h3 class="text-2xl font-bold text-slate-900 mb-2">The EMP Shift</h3>
+                    <p class="text-sm text-slate-600">We restore your biology to its prime state. Infinite energy. Laser
+                        focus. Confidence in the boardroom.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="bg-brand-dark py-24 text-white">
+        <div class="max-w-3xl mx-auto px-4 reveal">
+            <div class="text-center mb-16">
+                <h2 class="font-display text-4xl text-white uppercase tracking-wider">The <span
+                        class="text-brand-orange">Protocol</span> Breakdown</h2>
+                <div class="h-1 w-24 bg-brand-orange mx-auto mt-4"></div>
+            </div>
+
+            <div class="space-y-6">
+                <div
+                    class="bg-white/5 border border-white/10 p-6 rounded-lg hover:bg-white/10 hover:translate-x-2 transition duration-300 cursor-default">
+                    <div class="flex items-start gap-4">
+                        <span class="text-brand-orange font-display text-3xl">01</span>
+                        <div>
+                            <h3 class="font-bold text-xl mb-2 group-hover:text-brand-orange transition">Biological Audit
+                            </h3>
+                            <p class="text-gray-400 text-sm">Full panel bloodwork + Gut microbiome mapping. We identify
+                                the 'hidden brakes' on your energy.</p>
+                        </div>
+                    </div>
+                </div>
+                <div
+                    class="bg-white/5 border border-white/10 p-6 rounded-lg hover:bg-white/10 hover:translate-x-2 transition duration-300 cursor-default">
+                    <div class="flex items-start gap-4">
+                        <span class="text-brand-orange font-display text-3xl">02</span>
+                        <div>
+                            <h3 class="font-bold text-xl mb-2 group-hover:text-brand-orange transition">Metabolic
+                                Restoration</h3>
+                            <p class="text-gray-400 text-sm">Correcting insulin sensitivity and cortisol rhythms using
+                                targeted nutrition and supplementation.</p>
+                        </div>
+                    </div>
+                </div>
+                <div
+                    class="bg-white/5 border border-white/10 p-6 rounded-lg hover:bg-white/10 hover:translate-x-2 transition duration-300 cursor-default">
+                    <div class="flex items-start gap-4">
+                        <span class="text-brand-orange font-display text-3xl">03</span>
+                        <div>
+                            <h3 class="font-bold text-xl mb-2 group-hover:text-brand-orange transition">Cognitive
+                                Overclock</h3>
+                            <p class="text-gray-400 text-sm">Nootropic protocols and deep sleep architecture to maximize
+                                executive function.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-24 bg-slate-800 relative overflow-hidden">
+        <div class="absolute inset-0 opacity-10"
+            style="background-image: radial-gradient(#fff 1px, transparent 1px); background-size: 20px 20px;"></div>
+
+        <div class="max-w-4xl mx-auto px-4 relative z-10 reveal">
+            <h2 class="text-center font-display text-4xl text-white mb-16 uppercase">Your Path To <span
+                    class="text-brand-orange">Peak</span></h2>
+
+            <div class="relative border-l-4 border-brand-orange ml-4 md:ml-1/2 space-y-12">
+                <div class="relative pl-8 md:pl-12 group">
+                    <div
+                        class="absolute -left-[14px] top-0 w-6 h-6 bg-brand-orange rounded-full border-4 border-slate-800 group-hover:scale-125 transition">
+                    </div>
+                    <div class="bg-white p-6 rounded shadow-lg max-w-md hover:shadow-2xl transition duration-300">
+                        <span class="text-xs font-bold text-brand-orange uppercase">Day 1-7</span>
+                        <h3 class="font-bold text-slate-900 text-xl">The Washout</h3>
+                        <p class="text-sm text-slate-600 mt-2">We strip inflammatory foods and stabilize blood sugar.
+                            You will feel withdrawal, then clarity.</p>
+                    </div>
+                </div>
+                <div class="relative pl-8 md:pl-12 group">
+                    <div
+                        class="absolute -left-[14px] top-0 w-6 h-6 bg-brand-orange rounded-full border-4 border-slate-800 group-hover:scale-125 transition">
+                    </div>
+                    <div class="bg-white p-6 rounded shadow-lg max-w-md hover:shadow-2xl transition duration-300">
+                        <span class="text-xs font-bold text-brand-orange uppercase">Day 8-30</span>
+                        <h3 class="font-bold text-slate-900 text-xl">Metabolic Ignition</h3>
+                        <p class="text-sm text-slate-600 mt-2">Introduction of strength protocols and custom
+                            supplements. Fat loss accelerates.</p>
+                    </div>
+                </div>
+                <div class="relative pl-8 md:pl-12 group">
+                    <div
+                        class="absolute -left-[14px] top-0 w-6 h-6 bg-brand-orange rounded-full border-4 border-slate-800 group-hover:scale-125 transition">
+                    </div>
+                    <div class="bg-white p-6 rounded shadow-lg max-w-md hover:shadow-2xl transition duration-300">
+                        <span class="text-xs font-bold text-brand-orange uppercase">Day 31-90</span>
+                        <h3 class="font-bold text-slate-900 text-xl">Optimization</h3>
+                        <p class="text-sm text-slate-600 mt-2">Data re-test. We fine-tune for long-term sustainability
+                            and cognitive peak.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="bg-brand-orange py-20 relative clip-chevron z-20">
+        <div class="max-w-5xl mx-auto px-4 text-center reveal">
+            <h2 class="font-display text-4xl text-white uppercase mb-12">Included Free For January Cohort</h2>
+
+            <div class="grid md:grid-cols-3 gap-6">
+                <div
+                    class="bg-white p-6 rounded-xl shadow-xl transform hover:scale-105 transition duration-300 hover:rotate-1">
+                    <span class="bg-brand-dark text-white px-2 py-1 text-[10px] font-bold uppercase rounded">Bonus
+                        #1</span>
+                    <h3 class="font-bold text-slate-900 text-lg mt-3 mb-2 uppercase">Travel Protocols</h3>
+                    <p class="text-sm text-slate-600">The "Jet Lag Eradication" system used by F1 drivers. Arrive ready
+                        to perform.</p>
+                    <p class="mt-4 font-bold text-brand-orange">$497 Value</p>
+                </div>
+                <div
+                    class="bg-white p-6 rounded-xl shadow-xl transform hover:scale-105 transition duration-300 hover:-rotate-1 delay-75">
+                    <span class="bg-brand-dark text-white px-2 py-1 text-[10px] font-bold uppercase rounded">Bonus
+                        #2</span>
+                    <h3 class="font-bold text-slate-900 text-lg mt-3 mb-2 uppercase">Restaurant Guide</h3>
+                    <p class="text-sm text-slate-600">"What to Order" cheat sheets for the top 50 executive restaurant
+                        chains globally.</p>
+                    <p class="mt-4 font-bold text-brand-orange">$297 Value</p>
+                </div>
+                <div
+                    class="bg-white p-6 rounded-xl shadow-xl transform hover:scale-105 transition duration-300 hover:rotate-1 delay-150">
+                    <span class="bg-brand-dark text-white px-2 py-1 text-[10px] font-bold uppercase rounded">Bonus
+                        #3</span>
+                    <h3 class="font-bold text-slate-900 text-lg mt-3 mb-2 uppercase">Supplement Blackbook</h3>
+                    <p class="text-sm text-slate-600">Direct access to our pharmaceutical-grade compounding pharmacy
+                        partners.</p>
+                    <p class="mt-4 font-bold text-brand-orange">Priceless</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="pricing" class="py-24 bg-gray-100 px-4">
+        <div class="max-w-5xl mx-auto reveal">
+            <h2 class="text-center font-display text-5xl text-slate-900 mb-12 uppercase">Choose Your Level</h2>
+
+            <div class="grid md:grid-cols-2 gap-8 items-start">
+                <div class="bg-white p-8 rounded-2xl shadow-xl border border-gray-200 hover-card">
+                    <h3 class="font-bold text-slate-500 text-xl uppercase tracking-widest">Core Protocol</h3>
+                    <div class="my-6">
+                        <span class="text-4xl font-bold text-slate-900">$2,500</span>
+                        <span class="text-slate-500">/ 90 Days</span>
+                    </div>
+                    <p class="text-sm text-slate-600 mb-8 pb-8 border-b border-gray-100">For executives who need the
+                        plan but can execute alone.</p>
+                    <ul class="space-y-4 mb-8">
+                        <li class="flex gap-2 text-sm text-slate-700">
+                            <svg class="w-5 h-5 text-slate-900" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M5 13l4 4L19 7" />
+                            </svg>
+                            Bloodwork Analysis
+                        </li>
+                        <li class="flex gap-2 text-sm text-slate-700">
+                            <svg class="w-5 h-5 text-slate-900" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M5 13l4 4L19 7" />
+                            </svg>
+                            Nutrition Blueprint
+                        </li>
+                        <li class="flex gap-2 text-sm text-slate-700">
+                            <svg class="w-5 h-5 text-slate-900" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M5 13l4 4L19 7" />
+                            </svg>
+                            Monthly Check-in
+                        </li>
+                        <li class="flex gap-2 text-sm text-slate-400 line-through">
+                            <svg class="w-5 h-5 text-slate-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M6 18L18 6M6 6l12 12" />
+                            </svg>
+                            24/7 WhatsApp Concierge
+                        </li>
+                    </ul>
+                    <a href="#apply"
+                        class="block w-full py-4 rounded bg-slate-200 text-slate-900 font-bold text-center hover:bg-slate-300 transition uppercase">Select
+                        Core</a>
+                </div>
+
+                <div
+                    class="bg-white p-8 rounded-2xl shadow-2xl border-4 border-brand-orange relative transform md:-translate-y-6 hover-card">
+                    <div
+                        class="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-brand-orange text-white px-4 py-1 rounded-full text-xs font-bold uppercase tracking-widest shadow animate-pulse">
+                        Most Popular</div>
+
+                    <h3 class="font-bold text-slate-900 text-xl uppercase tracking-widest">Concierge</h3>
+                    <div class="my-6">
+                        <span class="text-4xl font-bold text-slate-900">$5,000</span>
+                        <span class="text-slate-500">/ 90 Days</span>
+                    </div>
+                    <p class="text-sm text-slate-600 mb-8 pb-8 border-b border-gray-100">Full hands-off management. We
+                        handle everything.</p>
+                    <ul class="space-y-4 mb-8">
+                        <li class="flex gap-2 text-sm text-slate-900 font-bold">
+                            <svg class="w-5 h-5 text-slate-900" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M5 13l4 4L19 7" />
+                            </svg>
+                            Bloodwork Analysis
+                        </li>
+                        <li class="flex gap-2 text-sm text-slate-900 font-bold">
+                            <svg class="w-5 h-5 text-slate-900" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M5 13l4 4L19 7" />
+                            </svg>
+                            Nutrition Blueprint
+                        </li>
+                        <li class="flex gap-2 text-sm text-slate-900 font-bold">
+                            <svg class="w-5 h-5 text-slate-900" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M5 13l4 4L19 7" />
+                            </svg>
+                            Bi-Weekly Zoom Calls
+                        </li>
+                        <li class="flex gap-2 text-sm text-brand-orange font-bold">
+                            <svg class="w-5 h-5 text-brand-orange" fill="none" viewBox="0 0 24 24"
+                                stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M5 13l4 4L19 7" />
+                            </svg>
+                            24/7 WhatsApp Concierge
+                        </li>
+                        <li class="flex gap-2 text-sm text-brand-orange font-bold">
+                            <svg class="w-5 h-5 text-brand-orange" fill="none" viewBox="0 0 24 24"
+                                stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M5 13l4 4L19 7" />
+                            </svg>
+                            Private Chef Coordination
+                        </li>
+                    </ul>
+                    <a href="#apply"
+                        class="btn-shimmer block w-full py-4 rounded bg-brand-orange text-white font-bold text-center hover:bg-orange-600 transition shadow-lg uppercase tracking-wider">Apply
+                        For Concierge</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-12 bg-white text-center border-t border-gray-100 reveal">
+        <div class="max-w-3xl mx-auto px-4">
+            <div
+                class="inline-block p-4 rounded-full bg-gray-50 border-4 border-slate-200 mb-6 hover:scale-110 transition duration-300">
+                <svg class="w-12 h-12 text-brand-orange" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                        d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                </svg>
+            </div>
+            <h3 class="font-display text-2xl text-slate-900 uppercase mb-2">The "Executive Performance" Guarantee</h3>
+            <p class="text-slate-600">If your blood biomarkers do not show measurable improvement within 90 days, we
+                will continue to coach you for free until they do. You take zero risk.</p>
+        </div>
+    </section>
+
+    <section id="apply" class="py-24 bg-brand-dark relative overflow-hidden">
+        <div class="absolute top-0 right-0 w-full h-full bg-brand-orange opacity-5"
+            style="clip-path: polygon(100% 0, 0% 100%, 100% 100%);"></div>
+
+        <div class="max-w-2xl mx-auto px-4 relative z-10 reveal">
+            <div class="text-center mb-10">
+                <h2 class="font-display text-4xl text-white uppercase mb-4">Secure Your Spot</h2>
+                <p class="text-slate-400">We cap intake at 10 executives per month. Application does not guarantee
+                    acceptance.</p>
+            </div>
+
+            <form class="space-y-6">
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div>
+                        <label class="block text-xs font-bold uppercase text-brand-orange mb-2">First Name</label>
+                        <input type="text" class="w-full p-4 rounded input-field" placeholder="John">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold uppercase text-brand-orange mb-2">Last Name</label>
+                        <input type="text" class="w-full p-4 rounded input-field" placeholder="Doe">
+                    </div>
+                </div>
+
+                <div>
+                    <label class="block text-xs font-bold uppercase text-brand-orange mb-2">Email Address</label>
+                    <input type="email" class="w-full p-4 rounded input-field" placeholder="john@company.com">
+                </div>
+
+                <div>
+                    <label class="block text-xs font-bold uppercase text-brand-orange mb-2">Primary Goal</label>
+                    <div class="relative">
+                        <select class="w-full p-4 rounded input-field appearance-none">
+                            <option class="bg-brand-dark">Lose 20lbs+ Visceral Fat</option>
+                            <option class="bg-brand-dark">Increase Cognitive Output</option>
+                            <option class="bg-brand-dark">Fix Sleep & Recovery</option>
+                        </select>
+                        <div class="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none text-white">
+                            <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M19 9l-7 7-7-7" />
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+
+                <button type="button"
+                    class="btn-shimmer w-full bg-brand-orange text-white font-bold py-5 rounded hover:bg-orange-600 transition shadow-lg uppercase tracking-wider flex items-center justify-center gap-2 group">
+                    Submit Application
+                    <svg class="w-5 h-5 group-hover:translate-x-1 transition" fill="none" viewBox="0 0 24 24"
+                        stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                    </svg>
+                </button>
+                <p class="text-center text-xs text-slate-500">Your data is encrypted. We do not spam.</p>
+            </form>
+        </div>
+    </section>
+
+    <footer class="bg-brand-dark text-slate-500 py-12 text-center text-sm border-t border-gray-800">
+        <div class="max-w-4xl mx-auto px-4">
+            <p class="mb-4 text-white font-display text-2xl uppercase">CLICKBOOST</p>
+            <p>&copy; 2024 Clickboost. All Rights Reserved.</p>
+            <div class="mt-6 flex justify-center gap-6">
+                <a href="#" class="hover:text-white transition">Legal</a>
+                <a href="#" class="hover:text-white transition">Privacy</a>
+                <a href="#" class="hover:text-white transition">Contact</a>
+            </div>
+        </div>
+    </footer>
+
+    <div
+        class="fixed bottom-0 left-0 w-full bg-brand-surface border-t border-slate-700 p-4 md:hidden z-50 flex items-center justify-between shadow-2xl reveal active">
+        <div>
+            <p class="text-[10px] text-slate-400 uppercase font-bold tracking-widest">Limited Intake</p>
+            <p class="font-display text-xl text-white leading-none">JANUARY COHORT</p>
+        </div>
+        <a href="#apply"
+            class="bg-brand-orange text-white px-6 py-3 rounded font-bold uppercase text-sm tracking-wider shadow-glow">Apply
+            Now</a>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const reveals = document.querySelectorAll('.reveal');
+
+            const revealOnScroll = () => {
+                const windowHeight = window.innerHeight;
+                const elementVisible = 150;
+
+                reveals.forEach((reveal) => {
+                    const elementTop = reveal.getBoundingClientRect().top;
+                    if (elementTop < windowHeight - elementVisible) {
+                        reveal.classList.add('active');
+                    }
+                });
+            };
+
+            window.addEventListener('scroll', revealOnScroll);
+            // Trigger once on load
+            revealOnScroll();
+        });
+    </script>
+</body>
+
+</html>
